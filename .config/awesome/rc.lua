@@ -681,3 +681,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --
 
 awful.spawn.with_shell("picom")
+awful.spawn.with_shell("setxkbmap 'fi' &")
