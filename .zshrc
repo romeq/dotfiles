@@ -23,3 +23,14 @@ function user_hostname {
 }
 
 PS1="$(user_hostname) $(path) $(clock) $(echo $prompt_end) "
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# aliases
+alias ls="ls -l --color"
+alias grep="grep --color"
+
+alias gst="git status"
+alias gnc="git commit -m "
+alias gall="git add ."
