@@ -34,3 +34,14 @@ alias grep="grep --color"
 alias gst="git status"
 alias gnc="git commit -m "
 alias gall="git add ."
+
+# functions
+function usejmp {
+    $1 $(/usr/local/bin/jmp $2)
+}
+function jedit {
+    /usr/bin/nvim $(/usr/local/bin/jmp $1)
+}
+function jto {
+    /usr/bin/cd $(/usr/local/bin/jmp $1)
+}
