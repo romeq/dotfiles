@@ -2,7 +2,7 @@ autoload -U colors && colors
 
 HISTSIZE=2000
 SAVEHIST=2000
-HISTFILE=.zsh_history
+HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
@@ -19,16 +19,16 @@ function path {
     echo "%{$fg[blue]%}%~%{$reset_color%}"
 }
 function user_hostname {
-    echo "%{$fg[blue]%}[ %{$fg[cyan]%}%n @ %m %{$fg[blue]%}]%{$reset_color%}"
+    echo "%{$fg[blue]%}[ %{$fg[cyan]%}%n@%m %{$fg[blue]%}]%{$reset_color%}"
 }
 
-PS1="$(user_hostname) $(path) $(clock) $(echo $prompt_end) "
+PS1="%B$(user_hostname)%b %B$(clock)%b %B$(path)%b $(echo $prompt_end) "
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 # aliases
-alias ls="ls -l --color"
+alias ls="ls -lh --color"
 alias grep="grep --color"
 
 alias gst="git status"
@@ -45,3 +45,7 @@ function jedit {
 function jto {
     /usr/bin/cd $(/usr/local/bin/jmp $1)
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
