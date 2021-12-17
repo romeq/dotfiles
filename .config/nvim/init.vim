@@ -22,7 +22,7 @@ set mouse+=a
 
 " clipboard as default register
 if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
+    set clipboard=unnamed,unnamedplus
 endif
 
 filetype plugin on
