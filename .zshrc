@@ -26,6 +26,10 @@ PS1="%B$(user_hostname)%b %B$(clock)%b %B$(path)%b $(echo $prompt_end) "
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey "^A" beginning-of-line
+bindkey "^D" delete-char-or-list
+bindkey "^E" end-of-line
+bindkey "^K" kill-line
 
 # aliases
 alias ls="ls -lh --color"
@@ -36,16 +40,27 @@ alias gnc="git commit -m "
 alias gall="git add ."
 
 # functions
-function usejmp {
-    $1 $(/usr/local/bin/jmp $2)
+function je {
+    if [ -z $1 ]; then
+        echo "usage: je <alias>" > /dev/stderr
+        return 1
+    fi
+    if [ -n $EDITOR ]; then
+        $EDITOR `jmp $1`
+    else
+        nano `jmp $1`
+    fi
 }
-function jedit {
-    /usr/bin/nvim $(/usr/local/bin/jmp $1)
-}
-function jto {
-    /usr/bin/cd $(/usr/local/bin/jmp $1)
+function j {
+    if [ -z $1 ]; then
+        echo "usage: j <alias>" > /dev/stderr
+        return 1
+    fi
+
+    cd `jmp $1`
 }
 
+export EDITOR="nvim"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
