@@ -22,7 +22,13 @@ function user_hostname {
     echo "%{$fg[blue]%}[ %{$fg[cyan]%}%n@%m %{$fg[blue]%}]%{$reset_color%}"
 }
 
-PS1="%B$(user_hostname)%b %B$(clock)%b %B$(path)%b $(echo $prompt_end) "
+setopt PROMPT_SUBST
+PROMPT="%B$(user_hostname)%b %B$(clock)%b %B$(path)%b $(echo $prompt_end) "
+TMOUT=1
+
+TRAPALRM() {
+    zle reset-prompt
+}
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
@@ -59,8 +65,9 @@ function j {
 
     cd `jmp $1`
 }
+alias ntmp="cd `mktemp -d`"
 
 export EDITOR="nvim"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[standardeja -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
