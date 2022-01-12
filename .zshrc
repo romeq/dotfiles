@@ -1,10 +1,12 @@
 autoload -U colors && colors
 
+TMOUT=1
 HISTSIZE=2000
 SAVEHIST=2000
 HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
+setopt PROMPT_SUBST
 
 autoload -Uz compinit
 compinit
@@ -22,9 +24,7 @@ function user_hostname {
     echo "%{$fg[blue]%}[ %{$fg[cyan]%}%n@%m %{$fg[blue]%}]%{$reset_color%}"
 }
 
-setopt PROMPT_SUBST
 PROMPT="%B$(user_hostname)%b %B$(clock)%b %B$(path)%b $(echo $prompt_end) "
-TMOUT=1
 
 TRAPALRM() {
     zle reset-prompt
@@ -36,6 +36,7 @@ bindkey "^A" beginning-of-line
 bindkey "^D" delete-char-or-list
 bindkey "^E" end-of-line
 bindkey "^K" kill-line
+bindkey "^O" accept-line
 
 # aliases
 alias ls="ls -lh --color"
@@ -68,6 +69,8 @@ function j {
 alias ntmp="cd `mktemp -d`"
 
 export EDITOR="nvim"
+
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[standardeja -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
