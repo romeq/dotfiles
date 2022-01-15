@@ -1,7 +1,7 @@
 general {
         interval = 1
         color_good = "#8ec07c"
-        color_degraded = "#fe8019"
+        color_degraded = "#8ec07c"
         color_bad = "#fb4934"
 }
 

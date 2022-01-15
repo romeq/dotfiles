@@ -67,6 +67,7 @@ function j {
     cd `jmp $1`
 }
 alias ntmp="cd `mktemp -d`"
+alias lock="i3lock -i /etc/wallpapers/login.png -n"
 
 export EDITOR="nvim"
 

@@ -13,14 +13,14 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrains Mono Semibold 11
+font monospace:JetBrains Mono Medium Nerd Font Complete 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
 # gaps
-gaps inner 20
+gaps inner 15
 for_window [class="^.*"] border pixel 2
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -28,17 +28,17 @@ for_window [class="^.*"] border pixel 2
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
 # Wallpaper
-exec --no-startup-id feh --random --bg-fill /etc/wallpapers
+exec --no-startup-id feh --bg-fill /etc/wallpapers/wp9110462-linus-torvalds-wallpapers.png
 
 # Picom
-exec --no-startup-id picom --xrender-sync-fence --config /home/romeq/.config/picom/picom.conf
+exec --no-startup-id picom -b 2&>/home/rmq/.picom.log
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -48,11 +48,10 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # screenshot
-bindsym Print exec --no-startup-id gnome-screenshot -a
+bindsym Print exec --no-startup-id import /tmp/image.png
 
 # calculator to change wallpapers
 bindsym $mod+XF86Calculator exec --no-startup-id feh --random --bg-fill /etc/wallpapers
-bindsym $mod+Shift+XF86Calculator exec --no-startup-id feh --random --bg-fill /etc/wskch
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -191,22 +190,21 @@ bindsym $mod+c mode "resize"
 # finds out, if available)
 bar {
     colors {
-        background #1d2021
+        background #282828
         statusline #ebdbb2
         separator #3b4252
 
-        focused_workspace  #4c7899 #285577 #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
+        focused_workspace  #504945 #504945 #d5c4a1
+        inactive_workspace #32302f #32302f #d5c4a1
+        urgent_workspace   #427b58 #427b58 #d5c4a1
         binding_mode       #2f343a #900000 #ffffff
     }
     position top
     font pango:JetBrains Mono Bold 10
     binding_mode_indicator yes
-    separator_symbol " | "
-    workspace_min_width 50px
+    separator_symbol " - "
+    workspace_min_width 60px
 
-    i3bar_command i3bar --transparency
+    i3bar_command i3bar
     status_command i3status
 }

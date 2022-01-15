@@ -1,5 +1,3 @@
-#run-shell ~/.config/tmux/tmux-onedark-theme.tmux
-
 ## COLORSCHEME: gruvbox dark (medium)
 set-option -g status "on"
 
