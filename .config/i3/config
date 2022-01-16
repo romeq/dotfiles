@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font monospace:JetBrains Mono Medium Nerd Font Complete 12
+font monospace:JetBrains Mono Bold 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -35,7 +35,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
 exec --no-startup-id nm-applet
 
 # Wallpaper
-exec --no-startup-id feh --bg-fill /etc/wallpapers/wp9110462-linus-torvalds-wallpapers.png
+exec --no-startup-id feh --bg-fill /etc/wallpapers/wallhaven-286p5m.jpg
 
 # Picom
 exec --no-startup-id picom -b 2&>/home/rmq/.picom.log
@@ -204,6 +204,7 @@ bar {
     binding_mode_indicator yes
     separator_symbol " - "
     workspace_min_width 60px
+    height 25
 
     i3bar_command i3bar
     status_command i3status

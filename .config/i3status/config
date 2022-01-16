@@ -35,7 +35,7 @@ path_exists VPN {
 }
 
 wireless wlp6s0 {
-    format_up = "wlp6s0: %ip, %essid"
+    format_up = "Wi-Fi: %ip"
     format_down = "Not connected to wifi"
 }
 
