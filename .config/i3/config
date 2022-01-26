@@ -13,14 +13,14 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font monospace:JetBrains Mono Bold 12
+font pango:JetBrains Mono Bold 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
 # gaps
-gaps inner 15
+gaps inner 5
 for_window [class="^.*"] border pixel 2
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -35,10 +35,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
 exec --no-startup-id nm-applet
 
 # Wallpaper
-exec --no-startup-id feh --bg-fill /etc/wallpapers/wallhaven-286p5m.jpg
+exec --no-startup-id feh --bg-fill ~/.wallpapers/wallhaven-286p5m.jpg
 
 # Picom
-exec --no-startup-id picom -b 2&>/home/rmq/.picom.log
+exec --no-startup-id picom -b 
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -47,11 +47,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# screenshot
-bindsym Print exec --no-startup-id import /tmp/image.png
-
 # calculator to change wallpapers
-bindsym $mod+XF86Calculator exec --no-startup-id feh --random --bg-fill /etc/wallpapers
+bindsym $mod+XF86Calculator exec --no-startup-id feh --random --bg-fill ~/.wallpapers
+
+bindsym Print exec gnome-screenshot -a
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
