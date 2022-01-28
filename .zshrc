@@ -40,7 +40,7 @@ alias git_nc="git commit -m "
 alias git_add="git add ."
 
 # functions
-function je {
+je() {
     if [ -z $1 ]; then
         echo "usage: je <alias>" > /dev/stderr
         return 1
@@ -51,7 +51,8 @@ function je {
         nano `jmp $1`
     fi
 }
-function j {
+
+j() {
     if [ -z $1 ]; then
         echo "usage: j <alias>" > /dev/stderr
         return 1
@@ -60,12 +61,17 @@ function j {
     cd `jmp $1`
 }
 
+export NVM_DIR="$HOME/.nvm"
+load_nvm() {
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
 
 # env variables
 export EDITOR="nvim"
 export PATH="$PATH:$HOME/.scripts"
 
-# Node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# plugins
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/mauri/mauri
