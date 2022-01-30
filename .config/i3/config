@@ -20,7 +20,7 @@ font pango:JetBrains Mono Bold 10
 #font pango:DejaVu Sans Mono 8
 
 # gaps
-gaps inner 5
+gaps inner 10
 for_window [class="^.*"] border pixel 2
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -38,7 +38,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill $HOME/.wallpapers/wallhaven-286p5m.jpg
 
 # Picom
-exec --no-startup-id picom -b 
+exec picom &
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -198,12 +198,12 @@ bar {
         urgent_workspace   #427b58 #427b58 #d5c4a1
         binding_mode       #2f343a #900000 #ffffff
     }
-    position top
-    font pango:JetBrains Mono Bold 10
+    position bottom
+    font pango:JetBrains Mono Bold 9.8
     binding_mode_indicator yes
     separator_symbol " - "
     workspace_min_width 60px
-    height 25
+    height 30
 
     i3bar_command i3bar
     status_command i3status
