@@ -7,7 +7,7 @@ mauri() {
     # Jos olet silti huolissasi Maurin unensaannista, saat otettua kommentit helposti pois.
     # Esim. vimillä voit käyttää makroa ' :%s/#s/s/g', joka muuttaa "#s" -> "s".
 
-    maurin_jatokset="$HOME/aurshit" # ~/aurshit on alkuperäisen maurin jätöskansio.
+    maurin_jatokset="$HOME/.maurishit" # ~/aurshit on alkuperäisen maurin jätöskansio.
     mkdir -p $maurin_jatokset
 
     arg_1=$argv[1]
