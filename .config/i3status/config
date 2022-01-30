@@ -9,7 +9,7 @@ order += "disk /"
 order += "disk /mnt/salmiakki"
 order += "volume master"
 order += "path_exists VPN"
-order += "wireless wlp6s0"
+order += "wireless wlan0"
 order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
@@ -24,8 +24,8 @@ disk "/mnt/salmiakki" {
 
 volume master {
     format = "Volume: %volume"
-    format_muted = "Headset muted"
-    device = "pulse:alsa_output.usb-Logitech_PRO_X_Wireless_Gaming_Headset-00.analog-stereo"
+    format_muted = "Volume muted"
+    device = "default"
 }
 
 path_exists VPN {
@@ -34,8 +34,8 @@ path_exists VPN {
     format = "%title: %status"
 }
 
-wireless wlp6s0 {
-    format_up = "Wi-Fi: %ip"
+wireless wlan0 {
+    format_up = "Local IP: %ip"
     format_down = "Not connected to wifi"
 }
 
