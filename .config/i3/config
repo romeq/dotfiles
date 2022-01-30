@@ -198,7 +198,8 @@ bar {
         urgent_workspace   #427b58 #427b58 #d5c4a1
         binding_mode       #2f343a #900000 #ffffff
     }
-    position bottom
+
+    position top
     font pango:JetBrains Mono Bold 9.8
     binding_mode_indicator yes
     separator_symbol " - "
