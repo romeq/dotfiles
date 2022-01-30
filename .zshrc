@@ -34,10 +34,10 @@ bindkey "^O" accept-line
 alias ddg="ddgr --np"
 alias l="exa"
 alias lh="exa -l"
-alias ls="echo use 'l' or 'lh'"
 alias grep="grep --color"
 alias ntmp="cd `mktemp -d`"
 alias lock="i3lock -i /etc/wallpapers/login.png -n"
+alias newtmux="tmux new-session -s "
 # aliases for absolute paths. (needed for doas configuration to be safe)
 alias pacman="/usr/bin/pacman"
 
@@ -66,6 +66,7 @@ j() {
 searchpkg() {
     ddgr --np "\!apkg $1"
 }
+
 
 export NVM_DIR="$HOME/.nvm"
 load_nvm() {
