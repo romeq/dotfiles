@@ -31,13 +31,15 @@ bindkey "^K" kill-line
 bindkey "^O" accept-line
 
 # aliases
-alias ls="ls -lh --color"
+alias ddg="ddgr --np"
+alias l="exa"
+alias lh="exa -l"
+alias ls="echo use 'l' or 'lh'"
 alias grep="grep --color"
 alias ntmp="cd `mktemp -d`"
 alias lock="i3lock -i /etc/wallpapers/login.png -n"
-alias git_st="git status"
-alias git_nc="git commit -m "
-alias git_add="git add ."
+# aliases for absolute paths. (needed for doas configuration to be safe)
+alias pacman="/usr/bin/pacman"
 
 # functions
 je() {
@@ -61,6 +63,10 @@ j() {
     cd `jmp $1`
 }
 
+searchpkg() {
+    ddgr --np "\!apkg $1"
+}
+
 export NVM_DIR="$HOME/.nvm"
 load_nvm() {
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -71,7 +77,8 @@ load_nvm() {
 export EDITOR="nvim"
 export PATH="$PATH:$HOME/.scripts"
 
-
 # plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/mauri/mauri
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
