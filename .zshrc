@@ -38,8 +38,6 @@ alias grep="grep --color"
 alias ntmp="cd `mktemp -d`"
 alias lock="i3lock -i /etc/wallpapers/login.png -n"
 alias newtmux="tmux new-session -s "
-# aliases for absolute paths. (needed for doas configuration to be safe)
-alias pacman="/usr/bin/pacman"
 
 # functions
 je() {
