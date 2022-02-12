@@ -5,22 +5,11 @@ general {
         color_bad = "#fb4934"
 }
 
-order += "disk /"
-order += "disk /mnt/salmiakki"
 order += "volume master"
 order += "path_exists VPN"
 order += "wireless wlan0"
-order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
-
-disk "/" {
-    format = "%percentage_used (%used/%total)"
-}
-
-disk "/mnt/salmiakki" {
-    format = "%percentage_used (%used/%total)"
-}
 
 volume master {
     format = "Volume: %volume"
@@ -35,20 +24,16 @@ path_exists VPN {
 }
 
 wireless wlan0 {
-    format_up = "Local IP: %ip"
+    format_up = "Connected to WiFi"
     format_down = "Not connected to wifi"
 }
 
-cpu_temperature 0 {
-    format = "CPU: %degrees°C"
-}
-
 tztime local {
-    format = "%d.%m.%Y %H:%M:%S"
+    format = "%d.%m.%Y %H:%M"
 }
 
 memory {
-    format = "RAM: %used/%total"
+    format = "RAM: %used / %total"
     threshold_degraded = "30%"
 }
 
