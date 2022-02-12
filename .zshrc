@@ -31,12 +31,14 @@ bindkey "^K" kill-line
 bindkey "^O" accept-line
 
 # aliases
+alias ls="echo use l or lf && ls"
+alias gdb="gdb -q"
 alias ddg="ddgr --np"
 alias l="exa"
-alias lh="exa -l"
+alias lf="exa -l"
 alias grep="grep --color"
 alias ntmp="cd `mktemp -d`"
-alias lock="i3lock -i /etc/wallpapers/login.png -n"
+alias lock="i3lock -i ~/.wallpapers/leaves-hard.jpg -n"
 alias newtmux="tmux new-session -s "
 
 # functions
@@ -74,10 +76,12 @@ load_nvm() {
 
 # env variables
 export EDITOR="nvim"
-export PATH="$PATH:$HOME/.scripts"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.scripts"
 
 # plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/mauri/mauri
-
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(zoxide init zsh)"
