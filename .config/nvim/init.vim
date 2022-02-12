@@ -1,3 +1,5 @@
+lua require("plugins")
+
 " use relative number system
 set relativenumber
 set nu rnu
@@ -29,15 +31,5 @@ filetype plugin on
 
 syntax on
 
-" call plugins. vim-plug, node required
-call plug#begin("~/.vim/plugged")
-    " Plugins
-    Plug 'morhetz/gruvbox'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'preservim/nerdcommenter'
-    Plug 'deoplete-plugins/deoplete-clang'
-    Plug 'mhinz/vim-startify'
-call plug#end()
-
-" colorscheme setup
 colorscheme gruvbox
+
