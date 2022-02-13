@@ -76,7 +76,7 @@ load_nvm() {
 
 # env variables
 export EDITOR="nvim"
-export PATH="$PATH:$HOME/.local/bin:$HOME/.scripts"
+export PATH="$PATH:$HOME/.local/bin:$HOME/scripts"
 
 # plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
