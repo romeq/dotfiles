@@ -32,8 +32,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-hsetroot -solid #1c1c1c &
+hsetroot -solid rgb:5/6/5 &
 dwmblocks &
 
-exec /usr/local/bin/dwm
-
+dbus-launch --exit-with-session /usr/local/bin/dwm
+ 
