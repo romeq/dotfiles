@@ -59,22 +59,26 @@ colors:
 
 font:
   normal:
-    family: JetBrains Mono Nerd Font
+    family: JetBrainsMono Nerd Font
+    #family: CaskaydiaCove Nerd Font
     style: Regular
 
   # Bold font face
   bold:
-    family: JetBrains Mono Nerd Font
+    family: JetBrainsMono Nerd Font
+    #family: CaskaydiaCove Nerd Font
     style: Bold
 
   # Italic font face
   italic:
-    family: JetBrains Mono NerdFont
+    family: JetBrainsMono Nerd Font
+    #family: CaskaydiaCove Nerd Font
     style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: Hack Nerd Font Mono
+    family: JetBrainsMono Nerd Font
+    #family: CaskaydiaCove Nerd Font
     style: Bold Italic
 
   # Point size
