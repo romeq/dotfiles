@@ -65,12 +65,11 @@ mauri() {
                 if [ "$2" = "kaikki" ]; then
                     echo "Olkoon sitten, Mauri päivittää kaiken."
                     sleep 2 
-                    \cd "$maurin_jatokset"  || return 1
+                    \cd "$maurin_jatokset" || return 1
                     updated=0
 
                     for dir in ./*; do
-
-                       \cd "$dir" || echo "hupsis nyt ei onnistunut"; continue
+                        \cd "$dir" || echo "hupsis nyt ei onnistunut"; continue
                         git fetch
                         if ! git status | grep -q "Your branch is up to date"; then
                             git pull
@@ -86,7 +85,7 @@ mauri() {
                             fi
                             updated=1
                         fi
-                       \cd .. || return 1
+                        \cd .. || return 1
                     done
                     if [ $updated -eq 0 ]; then
                         echo "Ei ollut mitään päivitettävää :("
@@ -94,7 +93,7 @@ mauri() {
                 else
                     echo "Olkoon sitten, Mauri päivittää kyllä."
                     sleep 2
-                   \cd "$maurin_jatokset/$2" || echo "hupsis"; return
+                    \cd "$maurin_jatokset/$2" || echo "hupsis"; return
                     
                     if git status | grep -q "Your branch is up to date"; then
                         git pull
