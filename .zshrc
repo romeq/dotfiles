@@ -31,7 +31,6 @@ bindkey "^K" kill-line
 bindkey "^O" accept-line
 
 # aliases
-alias ls="echo use l or lf && ls"
 alias gdb="gdb -q"
 alias ddg="ddgr --np"
 alias l="exa"
@@ -42,36 +41,8 @@ alias lock="i3lock -i ~/.wallpapers/leaves-hard.jpg -n"
 alias newtmux="tmux new-session -s "
 
 # functions
-je() {
-    if [ -z $1 ]; then
-        echo "usage: je <alias>" > /dev/stderr
-        return 1
-    fi
-    if [ -n $EDITOR ]; then
-        $EDITOR `jmp $1`
-    else
-        nano `jmp $1`
-    fi
-}
-
-j() {
-    if [ -z $1 ]; then
-        echo "usage: j <alias>" > /dev/stderr
-        return 1
-    fi
-
-    cd `jmp $1`
-}
-
 searchpkg() {
     ddgr --np "\!apkg $1"
-}
-
-
-export NVM_DIR="$HOME/.nvm"
-load_nvm() {
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
 
 # env variables
@@ -82,6 +53,5 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/scripts"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/mauri/mauri
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 eval "$(zoxide init zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
