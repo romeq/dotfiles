@@ -15,6 +15,7 @@ if has('unnamedplus')
 endif
 filetype plugin indent on
 syntax on
-
+let mapleader = " "
 " templates and extension specific commands
-autocmd BufNewFile  *.c  0r   ~/.config/nvim/templates/template.c
+autocmd BufNewFile  *.c     0r   ~/.config/nvim/templates/template.c
+autocmd BufNewFile  *.py    0r   ~/.config/nvim/templates/template.py
