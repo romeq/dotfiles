@@ -7,5 +7,16 @@ return require('packer').startup(function()
     use { 'ms-jpq/coq_nvim', branch = 'coq' }
     use 'neovim/nvim-lspconfig'
     use { 'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps' }
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    use {
+        "startup-nvim/startup.nvim",
+        requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+        config = function()
+            require"startup".setup({ theme = 'dashboard' })
+        end
+    }
 end)
 
