@@ -6,6 +6,6 @@ return require('packer').startup(function()
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'ms-jpq/coq_nvim', branch = 'coq' }
     use 'neovim/nvim-lspconfig'
-    use 'kyazdani42/nvim-tree.lua'
+    use { 'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps' }
 end)
 
