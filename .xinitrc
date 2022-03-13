@@ -32,8 +32,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-hsetroot -solid rgb:5/6/5 &
-dwmblocks &
+hsetroot -cover ~/.wallpapers/cbook-anime.png &
+picom &
+xset r rate 200 35 &
 
-dbus-launch --exit-with-session /usr/local/bin/dwm
+dbus-launch --exit-with-session awesome
  
