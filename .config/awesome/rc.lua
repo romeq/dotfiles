@@ -299,15 +299,20 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_wifi.sh", 1)),
-            rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_vpn.sh", 1)),
-            rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_volume.sh", 1)),
-            rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_weather.sh", 1800)),
-            rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_mem.sh", 1)),
-            rounded_box(mytextclock),
-            rounded_box(wibox.widget.systray()),
-            rounded_box(s.mylayoutbox),
+            {
+                layout = wibox.layout.fixed.horizontal,
+                rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_wifi.sh", 1)),
+                rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_vpn.sh", 1)),
+                rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_volume.sh", 1)),
+                rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_weather.sh", 1800)),
+                rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_mem.sh", 1)),
+                rounded_box(mytextclock),
+                rounded_box(wibox.widget.systray()),
+                rounded_box(s.mylayoutbox),
+            },
+            widget = wibox.container.margin,
+            left = 3,
+            right = 10,
         },
     }
 end)
