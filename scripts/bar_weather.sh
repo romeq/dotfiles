@@ -1,0 +1,1 @@
+echo "  $(weather espoo)"
