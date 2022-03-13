@@ -13,7 +13,6 @@ _comp_options+=(globdots)
 # zsh prompt
 PROMPT="%B%{$fg[green]%}%1~%{$reset_color%} %# %b"
 
-
 # bindkeys
 ## ctrl+right arrow to move cursor forward one word
 ## ctrl+left arrow to move cursor one word backward
@@ -41,7 +40,7 @@ alias lock="i3lock -i ~/.wallpapers/leaves-hard.jpg -n"
 alias newtmux="tmux new-session -s "
 
 # functions
-searchpkg() {
+findpkg() {
     ddgr --np "\!apkg $1"
 }
 
@@ -51,7 +50,8 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/scripts"
 
 # plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/mauri/mauri
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(zoxide init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias luamake=/home/rmq/git/lua-language-server/3rd/luamake/luamake
