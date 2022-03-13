@@ -1,5 +1,11 @@
 local opts = { noremap=true, silent=true }
 
+local buf_map = function(bufnr, mode, lhs, rhs, opts)
+    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
+        silent = true,
+    })
+end
+
 local attach_fn = function(client)
 
     -- Enable completion triggered by <c-x><c-o>
@@ -25,5 +31,14 @@ require'lspconfig'.clangd.setup{
     on_attach=attach_fn,
    	cmd = { "clangd", "--background-index", "--completion-style=bundled" },
 }
+require'lspconfig'.tsserver.setup({
+    on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
 
+        buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+        buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+        attach_fn(client, bufnr)
+    end,
+})
 require'lspconfig'.pyright.setup{on_attach=attach_fn,}
