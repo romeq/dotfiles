@@ -66,6 +66,7 @@ modkey = "Mod4"
 -- Custom script locations etc
 run_menu = "dmenu_run -sb \"#3c3836\" -sf \"#ebdbb2\""
 screenshot_script = "sh -c ~/scripts/ss.sh"
+is_laptop = false
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -168,7 +169,9 @@ local widget_rect = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 3)
 end
 
-local rounded_box = function(w)
+local rounded_box = function(w,bg,fg)
+    bg = bg or beautiful.bg_normal
+    fg = fg or beautiful.fg_normal
     return {
         {
             {
@@ -179,8 +182,8 @@ local rounded_box = function(w)
             },
             widget = wibox.container.background,
             shape = widget_rect,
-            bg = beautiful.bg_secondary,
-            fg = beautiful.fg_secondary,
+            bg = bg,
+            fg = fg,
         },
         widget = wibox.container.margin,
         margins = 3,
@@ -260,14 +263,17 @@ awful.screen.connect_for_each_screen(function(s)
                 widget = wibox.container.background,
             },
             widget = wibox.container.margin,
-            margins = 3
+            top = 3,
+            bottom = 3
         }
     } 
 
     -- Create the wibox
     s.mywibox = awful.wibar({
         position = "top", 
-        screen = s 
+        height = 32,
+        bg = beautiful.bg_bar .. "0",
+        screen = s,
     })
 
     -- Add widgets to the wibox
@@ -286,8 +292,8 @@ awful.screen.connect_for_each_screen(function(s)
                         right = 3,
                     },
                     widget = wibox.container.background,
-                    bg = beautiful.bg_secondary,
-                    fg = beautiful.fg_secondary,
+                    bg = beautiful.bg_normal,
+                    fg = beautiful.fg_normal,
                     shape = widget_rect,
                 },
                 widget = wibox.container.margin,
@@ -297,21 +303,41 @@ awful.screen.connect_for_each_screen(function(s)
                 bottom = 3,
             },
         },
-        s.mytasklist, -- Middle widget
+        {
+            s.mytasklist, -- Middle widget
+            widget = wibox.container.margin,
+            left = 5,
+            right = 5,
+        },
         { -- Right widgets
             {
                 layout = wibox.layout.fixed.horizontal,
-                rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_wifi.sh", 1)),
-                rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_vpn.sh", 1)),
-                rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_volume.sh", 1)),
-                rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_weather.sh", 1800)),
-                rounded_box(awful.widget.watch("/bin/sh -c ~/scripts/bar_mem.sh", 1)),
-                rounded_box(mytextclock),
-                rounded_box(wibox.widget.systray()),
-                rounded_box(s.mylayoutbox),
+                rounded_box(
+                    awful.widget.watch("/bin/sh -c ~/scripts/bar_wifi.sh", 1),
+                    beautiful.bg_secondary, beautiful.fg_secondary
+                ),
+                rounded_box(
+                    awful.widget.watch("/bin/sh -c ~/scripts/bar_vpn.sh", 1),
+                    beautiful.bg_secondary, beautiful.fg_secondary
+                ),
+                rounded_box(
+                    awful.widget.watch("/bin/sh -c ~/scripts/bar_volume.sh", 1),
+                    beautiful.bg_secondary, beautiful.fg_secondary
+                ),
+                rounded_box(
+                    awful.widget.watch("/bin/sh -c ~/scripts/bar_weather.sh", 1800),
+                    beautiful.bg_secondary, beautiful.fg_secondary
+                ),
+                rounded_box(
+                    awful.widget.watch("/bin/sh -c ~/scripts/bar_mem.sh", 1),
+                    beautiful.bg_secondary, beautiful.fg_secondary
+                ),
+                rounded_box(mytextclock,beautiful.bg_secondary, beautiful.fg_secondary),
+                rounded_box(wibox.widget.systray(),beautiful.bg_secondary, beautiful.fg_secondary),
+                rounded_box(s.mylayoutbox,beautiful.bg_secondary, beautiful.fg_secondary),
             },
             widget = wibox.container.margin,
-            left = 3,
+            left = 0,
             right = 10,
         },
     }
@@ -641,6 +667,10 @@ end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
+    local top_titlebar = awful.titlebar(c, {
+        height  = 20,
+    })
+
     -- buttons for the titlebar
     local buttons = gears.table.join(
         awful.button({ }, 1, function()
@@ -653,7 +683,7 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c) : setup {
+    top_titlebar : setup {
         { -- Left
             layout  = wibox.layout.fixed.horizontal
         },
