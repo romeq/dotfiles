@@ -8,26 +8,35 @@ local current_theme = "romeq"
 
 local theme = {}
 
-theme.font          = "CaskaydiaCove Nerd Font 9"
+theme.font          = "CaskaydiaCove Nerd Font 10"
 
-theme.bg_normal     = "#1d2021"
-theme.bg_focus      = "#3c3836"
-theme.bg_secondary  = "#3c3836"
+theme.bg_normal     = "#282828" -- Normal, used in elements in unfocused state
+theme.bg_secondary  = "#282828" -- Secondary, used in widgets
+theme.bg_focus      = "#3c3836" -- Focused, used in focused widgets
+theme.bg_bar        = "#1d2021" -- Bar, used in bar
 theme.bg_urgent     = "#282828"
 theme.bg_minimize   = "#282828"
-theme.bg_systray    = theme.bg_secondary
+theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#a89984"
-theme.fg_secondary  = "#ebdbb2"
-theme.fg_focus      = "#ebdbb2"
+theme.fg_normal     = "#ebdbb2" -- Normal, used in elements in unfocused state
+theme.fg_secondary  = "#ebdbb2" -- Secondary, used in bar widgets 
+theme.fg_focus      = "#fbf1c7" -- Focused, used in focused widgets 
 theme.fg_urgent     = "#d65d0e"
 theme.fg_minimize   = "#ebdbb2"
 
 theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(0)
 theme.border_normal = "#1d2021"
-theme.border_focus  = "#3c3836"
+theme.border_focus  = "#689d6a"
 theme.border_marked = "#639d6a"
+
+-- Tasklist
+theme.tasklist_bg_normal = theme.bg_normal
+theme.tasklist_fg_normal = theme.fg_normal
+
+-- Taglist
+theme.taglist_bg_normal = theme.bg_normal
+theme.taglist_fg_normal = theme.fg_normal
 
 -- There are other variable sets
 -- overriding the  one when
