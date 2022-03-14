@@ -32,9 +32,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-hsetroot -cover ~/.wallpapers/cbook-anime.png &
 picom &
-xset r rate 200 35 &
+xset r rate 300 35 &
 
 dbus-launch --exit-with-session awesome
  
