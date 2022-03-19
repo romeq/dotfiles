@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ $# -ne 1 ] || ([ "$1" != "install" ] && [ "$1" != "uninstall" ]); then
-    echo "usage: $0 <install / uninstall>" 2>/dev/stderr
+    echo "usage: $0 <install / uninstall>" > /dev/stderr
     exit 1
 fi
 
