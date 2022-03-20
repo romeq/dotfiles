@@ -8,7 +8,7 @@ local current_theme = "romeq"
 
 local theme = {}
 
-theme.font          = "CaskaydiaCove Nerd Font 10"
+theme.font          = "CaskaydiaCove Nerd Font 11"
 
 theme.bg_normal     = "#282828" -- Normal, used in elements in unfocused state
 theme.bg_secondary  = "#282828" -- Secondary, used in widgets

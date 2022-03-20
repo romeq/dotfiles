@@ -320,6 +320,10 @@ awful.screen.connect_for_each_screen(function(s)
                     awful.widget.watch("/bin/sh -c ~/scripts/bar_vpn.sh", 1),
                     beautiful.bg_secondary, beautiful.fg_secondary
                 ),
+                --rounded_box(
+                --    awful.widget.watch("/bin/sh -c ~/scripts/bar_battery.sh", 1),
+                --    beautiful.bg_secondary, beautiful.fg_secondary
+                --),
                 rounded_box(
                     awful.widget.watch("/bin/sh -c ~/scripts/bar_volume.sh", 1),
                     beautiful.bg_secondary, beautiful.fg_secondary
