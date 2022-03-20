@@ -7,7 +7,7 @@ Configuration files for software I use.
 You can install my dotfiles using `stow`
 ```sh
 % git clone git@github.com:romeq/dotfiles.git
-% stow -t $HOME dotfiles
+% stow -t $HOME configs
 ```
 
 ## Note
