@@ -6,7 +6,7 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
     })
 end
 
-local attach_fn = function(client)
+local attach_fn = function(_)
 
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
