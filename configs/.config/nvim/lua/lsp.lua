@@ -23,15 +23,16 @@ local attach_fn = function(_)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ref', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-require'lspconfig'.clangd.setup{
+local lsp_config = require'lspconfig'
+
+lsp_config.clangd.setup{
     on_attach=attach_fn,
    	cmd = { "clangd", "--background-index", "--completion-style=bundled" },
 }
-require'lspconfig'.tsserver.setup({
+lsp_config.tsserver.setup({
     on_attach = function(client, bufnr)
         client.resolved_capabilities.document_formatting = false
         client.resolved_capabilities.document_range_formatting = false
@@ -41,4 +42,6 @@ require'lspconfig'.tsserver.setup({
         attach_fn(client, bufnr)
     end,
 })
-require'lspconfig'.pyright.setup{on_attach=attach_fn,}
+lsp_config.sumneko_lua.setup{on_attach=attach_fn,}
+lsp_config.hls.setup{on_attach=attach_fn,}
+lsp_config.pyright.setup{on_attach=attach_fn,}
