@@ -4,7 +4,9 @@ battery_status="$(cat /sys/class/power_supply/$battery/status)"
 model="$(cat /sys/class/power_supply/$battery/model_name | awk '{print $1" "$2}' | xargs)"
 
 emoji=""
-if [ "$battery_status" != "Charging" ]; then
+if [ ! "$battery_capacity" ]; then
+    emoji=""
+elif [ "$battery_status" != "Charging" ]; then
     if [ "$battery_capacity" -lt 10 ]; then
         emoji=""
     elif [ "$battery_capacity" -lt 20 ]; then
