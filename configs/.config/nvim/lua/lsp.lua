@@ -6,7 +6,7 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
     })
 end
 
-local attach_fn = function(_)
+local attach_fn = function(client)
 
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -32,16 +32,8 @@ lsp_config.clangd.setup{
     on_attach=attach_fn,
    	cmd = { "clangd", "--background-index", "--completion-style=bundled" },
 }
-lsp_config.tsserver.setup({
-    on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-
-        buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
-        buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
-        attach_fn(client, bufnr)
-    end,
-})
+lsp_config.tsserver.setup{on_attach = attach_fn,}
 lsp_config.sumneko_lua.setup{on_attach=attach_fn,}
 lsp_config.hls.setup{on_attach=attach_fn,}
 lsp_config.pyright.setup{on_attach=attach_fn,}
+lsp_config.rust_analyzer.setup{on_attach=attach_fn,}
