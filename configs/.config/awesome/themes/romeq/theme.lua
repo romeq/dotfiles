@@ -19,8 +19,8 @@ theme.bg_minimize   = "#282828"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#ebdbb2" -- Normal, used in elements in unfocused state
-theme.fg_secondary  = "#ebdbb2" -- Secondary, used in bar widgets 
-theme.fg_focus      = "#fbf1c7" -- Focused, used in focused widgets 
+theme.fg_secondary  = "#ebdbb2" -- Secondary, used in bar widgets
+theme.fg_focus      = "#fbf1c7" -- Focused, used in focused widgets
 theme.fg_urgent     = "#d65d0e"
 theme.fg_minimize   = "#ebdbb2"
 
