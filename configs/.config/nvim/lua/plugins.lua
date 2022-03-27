@@ -12,12 +12,7 @@ return require('packer').startup(function()
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     use {'lajp/testaustime-nvim', run = 'cabal install --overwrite-policy=always' }
-    use {
-        "startup-nvim/startup.nvim",
-        requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-        config = function()
-            require"startup".setup({ theme = 'dashboard' })
-        end
-    }
+    use 'glepnir/dashboard-nvim'
+    use 'liuchengxu/vim-clap'
 end)
 
