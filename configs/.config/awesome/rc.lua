@@ -48,12 +48,13 @@ end
 -- }}}
 
 -- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/themes/romeq/theme.lua")
+-- Themes define colours, icons, fonts and wallpapers
+local current_theme = "romeq1"
+beautiful.init("~/.config/awesome/themes/"..current_theme.."/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
-editor = os.getenv("EDITOR") or "nvim" 
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
