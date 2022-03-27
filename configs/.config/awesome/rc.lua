@@ -66,7 +66,7 @@ modkey = "Mod4"
 
 -- Custom script locations etc
 run_menu = "dmenu_run -sb \"#3c3836\" -sf \"#ebdbb2\""
-screenshot_script = "sh -c ~/scripts/ss.sh"
+screenshot_script = "flameshot gui"
 is_laptop = false
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
