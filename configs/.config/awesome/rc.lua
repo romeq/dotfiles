@@ -149,7 +149,8 @@ local tasklist_buttons = gears.table.join(
     end),
     awful.button({ }, 5, function ()
         awful.client.focus.byidx(-1)
-    end))
+    end)
+)
 
 local function set_wallpaper(s)
     -- Wallpaper
@@ -165,6 +166,7 @@ end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
+
 
 local widget_rect = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 3)
@@ -191,8 +193,19 @@ local rounded_box = function(w,bg,fg)
     }
 end
 
+local vpn_textbox = wibox.widget{
+    align  = 'center',
+    valign = 'center',
+    widget = wibox.widget.textbox,
+}
+local wifi_textbox = wibox.widget{
+    align  = 'center',
+    valign = 'center',
+    widget = wibox.widget.textbox,
+}
+
 awful.screen.connect_for_each_screen(function(s)
-    -- Wallpaper
+    -- Set wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
@@ -262,18 +275,21 @@ awful.screen.connect_for_each_screen(function(s)
                 },
                 id = 'background_role',
                 widget = wibox.container.background,
+                bg = beautiful.bg_secondary,
+                fg = beautiful.fg_secondary,
+                shape = widget_rect,
             },
             widget = wibox.container.margin,
             top = 3,
             bottom = 3
         }
-    } 
+    }
 
     -- Create the wibox
     s.mywibox = awful.wibar({
-        position = "top", 
-        height = 32,
-        bg = beautiful.bg_bar .. "0",
+        position = "top",
+        height = 33,
+        bg = "#0000000",
         screen = s,
     })
 
@@ -293,8 +309,8 @@ awful.screen.connect_for_each_screen(function(s)
                         right = 3,
                     },
                     widget = wibox.container.background,
-                    bg = beautiful.bg_normal,
-                    fg = beautiful.fg_normal,
+                    bg = beautiful.bg_secondary,
+                    fg = beautiful.fg_secondary,
                     shape = widget_rect,
                 },
                 widget = wibox.container.margin,
@@ -313,18 +329,19 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             {
                 layout = wibox.layout.fixed.horizontal,
+                awful.widget.watch("/bin/sh -c ~/scripts/bar_wifi.sh", 1, function(_, stdout)
+                    local color = string.find(stdout, "Connected") and "#6fba72" or "#db3232"
+                    wifi_textbox.markup = [[<span color="]]..color..[[">]]..stdout..[[</span>]]
+                end, rounded_box(wifi_textbox, beautiful.bg_secondary, beautiful.fg_secondary)),
+                awful.widget.watch("/bin/sh -c ~/scripts/bar_vpn.sh", 1, function(_, stdout)
+                    local color = string.find(stdout, "Connected") and "#6fba72" or "#db3232"
+                    vpn_textbox.markup = [[<span color="]]..color..[[">]]..stdout..[[</span>]]
+                end, rounded_box(vpn_textbox, beautiful.bg_secondary, beautiful.fg_secondary)),
+
                 rounded_box(
-                    awful.widget.watch("/bin/sh -c ~/scripts/bar_wifi.sh", 1),
+                    awful.widget.watch("/bin/sh -c ~/scripts/bar_battery.sh", 1),
                     beautiful.bg_secondary, beautiful.fg_secondary
                 ),
-                rounded_box(
-                    awful.widget.watch("/bin/sh -c ~/scripts/bar_vpn.sh", 1),
-                    beautiful.bg_secondary, beautiful.fg_secondary
-                ),
-                --rounded_box(
-                --    awful.widget.watch("/bin/sh -c ~/scripts/bar_battery.sh", 1),
-                --    beautiful.bg_secondary, beautiful.fg_secondary
-                --),
                 rounded_box(
                     awful.widget.watch("/bin/sh -c ~/scripts/bar_volume.sh", 1),
                     beautiful.bg_secondary, beautiful.fg_secondary
