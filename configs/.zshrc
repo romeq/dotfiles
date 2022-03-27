@@ -55,3 +55,4 @@ eval "$(zoxide init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias luamake=/home/rmq/git/lua-language-server/3rd/luamake/luamake
+[ -f "/home/rmq/.ghcup/env" ] && source "/home/rmq/.ghcup/env"
