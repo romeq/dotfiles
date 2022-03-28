@@ -199,11 +199,13 @@ local status_box_rounded = function(command, wanted_text, interval)
             command,
             interval,
             function(widget, stdout)
-                color = string.find(stdout, wanted_text) and "#6fba72" or "#db3232"
+                local color = string.find(stdout, wanted_text)
+                    and beautiful.fg_green
+                    or beautiful.fg_red
                 widget.markup = [[<span color="]]..color..[[">]]..stdout..[[</span>]]
             end
         ),
-        nil, nil
+        beautiful.bg_secondary, beautiful.fg_secondary
     )
 end
 

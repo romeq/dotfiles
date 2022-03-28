@@ -22,6 +22,8 @@ theme.bg_systray    = theme.bg_normal
 theme.fg_normal     = "#e8bc9b" -- Normal, used in elements in unfocused state
 theme.fg_secondary  = "#e8bc9b" -- Secondary, used in bar widgets
 theme.fg_focus      = "#f7d1b4" -- Focused, used in focused widgets
+theme.fg_green      = "#6fba72"
+theme.fg_red        = "#db3232"
 theme.fg_urgent     = "#d65d0e"
 theme.fg_minimize   = "#ebdbb2"
 
