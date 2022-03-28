@@ -172,7 +172,7 @@ local widget_rect = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 3)
 end
 
-local rounded_box = function(w,bg,fg)
+local box_rounded = function(w,bg,fg)
     bg = bg or beautiful.bg_normal
     fg = fg or beautiful.fg_normal
     return {
@@ -193,16 +193,19 @@ local rounded_box = function(w,bg,fg)
     }
 end
 
-local vpn_textbox = wibox.widget{
-    align  = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox,
-}
-local wifi_textbox = wibox.widget{
-    align  = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox,
-}
+local status_box_rounded = function(command, wanted_text, interval)
+    return box_rounded(
+        awful.widget.watch(
+            command,
+            interval,
+            function(widget, stdout)
+                color = string.find(stdout, wanted_text) and "#6fba72" or "#db3232"
+                widget.markup = [[<span color="]]..color..[[">]]..stdout..[[</span>]]
+            end
+        ),
+        nil, nil
+    )
+end
 
 awful.screen.connect_for_each_screen(function(s)
     -- Set wallpaper
@@ -329,34 +332,27 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             {
                 layout = wibox.layout.fixed.horizontal,
-                awful.widget.watch("/bin/sh -c ~/scripts/bar_wifi.sh", 1, function(_, stdout)
-                    local color = string.find(stdout, "Connected") and "#6fba72" or "#db3232"
-                    wifi_textbox.markup = [[<span color="]]..color..[[">]]..stdout..[[</span>]]
-                end, rounded_box(wifi_textbox, beautiful.bg_secondary, beautiful.fg_secondary)),
-                awful.widget.watch("/bin/sh -c ~/scripts/bar_vpn.sh", 1, function(_, stdout)
-                    local color = string.find(stdout, "Connected") and "#6fba72" or "#db3232"
-                    vpn_textbox.markup = [[<span color="]]..color..[[">]]..stdout..[[</span>]]
-                end, rounded_box(vpn_textbox, beautiful.bg_secondary, beautiful.fg_secondary)),
-
-                rounded_box(
+                status_box_rounded("/bin/sh -c ~/scripts/bar_wifi.sh", "Connected", 1),
+                status_box_rounded("/bin/sh -c ~/scripts/bar_vpn.sh", "Connected", 1),
+                box_rounded(
                     awful.widget.watch("/bin/sh -c ~/scripts/bar_battery.sh", 1),
                     beautiful.bg_secondary, beautiful.fg_secondary
                 ),
-                rounded_box(
+                box_rounded(
                     awful.widget.watch("/bin/sh -c ~/scripts/bar_volume.sh", 1),
                     beautiful.bg_secondary, beautiful.fg_secondary
                 ),
-                rounded_box(
+                box_rounded(
                     awful.widget.watch("/bin/sh -c ~/scripts/bar_weather.sh", 1800),
                     beautiful.bg_secondary, beautiful.fg_secondary
                 ),
-                rounded_box(
+                box_rounded(
                     awful.widget.watch("/bin/sh -c ~/scripts/bar_mem.sh", 1),
                     beautiful.bg_secondary, beautiful.fg_secondary
                 ),
-                rounded_box(mytextclock,beautiful.bg_secondary, beautiful.fg_secondary),
-                rounded_box(wibox.widget.systray(),beautiful.bg_secondary, beautiful.fg_secondary),
-                rounded_box(s.mylayoutbox,beautiful.bg_secondary, beautiful.fg_secondary),
+                box_rounded(mytextclock,beautiful.bg_secondary, beautiful.fg_secondary),
+                box_rounded(wibox.widget.systray(),beautiful.bg_secondary, beautiful.fg_secondary),
+                box_rounded(s.mylayoutbox,beautiful.bg_secondary, beautiful.fg_secondary),
             },
             widget = wibox.container.margin,
             left = 0,
