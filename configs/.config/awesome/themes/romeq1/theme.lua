@@ -13,10 +13,10 @@ theme.font          = "CaskaydiaCove Nerd Font 11"
 theme.hex_transparency = "f6"
 theme.bg_normal     = "#1c1c1c" -- Normal, used in elements in unfocused state
 theme.bg_secondary  = theme.bg_normal .. theme.hex_transparency -- Secondary, used in widgets
-theme.bg_focus      = "#171717" -- Focused, used in focused windows
+theme.bg_focus      = "#222222" -- Focused, used in focused windows
 theme.bg_focus_alt  = theme.bg_focus .. theme.hex_transparency
-theme.bg_urgent     = "#2f2f2f"
-theme.bg_minimize   = "#2f2f2f"
+theme.bg_urgent     = "#1c1c1c"
+theme.bg_minimize   = "#171717"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#e8bc9b" -- Normal, used in elements in unfocused state
