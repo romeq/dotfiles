@@ -51,7 +51,6 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/scripts"
 # plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-eval "$(zoxide init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias luamake=/home/rmq/git/lua-language-server/3rd/luamake/luamake
