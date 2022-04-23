@@ -62,12 +62,13 @@ editor_cmd = terminal .. " -e " .. editor
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+local modkey = "Mod4"
 
 -- Custom script locations etc
-run_menu = "dmenu_run -sb \"#3c3836\" -sf \"#ebdbb2\""
-screenshot_script = "flameshot gui"
-is_laptop = false
+local run_menu = "dmenu_run -sb \"#3c3836\" -sf \"#ebdbb2\""
+local screenshot_script = "flameshot gui"
+local raise_volume = "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+local lower_volume = "pactl set-sink-volume @DEFAULT_SINK@ -5%"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -169,7 +170,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 
 local widget_rect = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 3)
+    gears.shape.rounded_rect(cr, width, height, 2)
 end
 
 local box_rounded = function(w,bg,fg)
@@ -184,12 +185,13 @@ local box_rounded = function(w,bg,fg)
                 right = 10,
             },
             widget = wibox.container.background,
-            shape = widget_rect,
-            bg = bg,
-            fg = fg,
+            shape = widget_rect, bg = bg, fg = fg,
         },
         widget = wibox.container.margin,
-        margins = 3,
+        top = 4,
+        bottom = 4,
+        left = 3,
+        right= 3
     }
 end
 
@@ -285,81 +287,75 @@ awful.screen.connect_for_each_screen(function(s)
                 shape = widget_rect,
             },
             widget = wibox.container.margin,
-            top = 3,
-            bottom = 3
+            top = 4,
+            bottom = 4
         }
     }
 
     -- Create the wibox
     s.mywibox = awful.wibar({
         position = "top",
-        height = 33,
+        height = 45,
         bg = "#0000000",
         screen = s,
     })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            {
-                {
-                    {
-                        s.mytaglist,
-                        widget = wibox.container.margin,
-                        left = 3,
-                        top = -1,
-                        bottom = -1,
-                        right = 3,
-                    },
-                    widget = wibox.container.background,
-                    bg = beautiful.bg_secondary,
-                    fg = beautiful.fg_secondary,
-                    shape = widget_rect,
-                },
-                widget = wibox.container.margin,
-                left = 13,
-                right = 3,
-                top = 3,
-                bottom = 3,
-            },
-        },
         {
-            s.mytasklist, -- Middle widget
-            widget = wibox.container.margin,
-            left = 5,
-            right = 5,
-        },
-        { -- Right widgets
             {
-                layout = wibox.layout.fixed.horizontal,
-                status_box_rounded("/bin/sh -c ~/scripts/bar_wifi.sh", "Connected", 1),
-                status_box_rounded("/bin/sh -c ~/scripts/bar_vpn.sh", "Connected", 1),
-                box_rounded(
-                    awful.widget.watch("/bin/sh -c ~/scripts/bar_battery.sh", 1),
-                    beautiful.bg_secondary, beautiful.fg_secondary
-                ),
-                box_rounded(
-                    awful.widget.watch("/bin/sh -c ~/scripts/bar_volume.sh", 1),
-                    beautiful.bg_secondary, beautiful.fg_secondary
-                ),
-                box_rounded(
-                    awful.widget.watch("/bin/sh -c ~/scripts/bar_weather.sh", 1800),
-                    beautiful.bg_secondary, beautiful.fg_secondary
-                ),
-                box_rounded(
-                    awful.widget.watch("/bin/sh -c ~/scripts/bar_mem.sh", 1),
-                    beautiful.bg_secondary, beautiful.fg_secondary
-                ),
-                box_rounded(mytextclock,beautiful.bg_secondary, beautiful.fg_secondary),
-                box_rounded(wibox.widget.systray(),beautiful.bg_secondary, beautiful.fg_secondary),
-                box_rounded(s.mylayoutbox,beautiful.bg_secondary, beautiful.fg_secondary),
+                layout = wibox.layout.align.horizontal,
+                { -- Left widgets
+                    layout = wibox.layout.fixed.horizontal,
+                    {
+                        {
+                            {
+                                s.mytaglist,
+                                widget = wibox.container.margin,
+                                left = 3,
+                                top = -1,
+                                bottom = -1,
+                                right = 3,
+                            },
+                            widget = wibox.container.background,
+                            bg = beautiful.bg_secondary,
+                            fg = beautiful.fg_secondary,
+                            shape = widget_rect,
+                        },
+                        widget = wibox.container.margin,
+                        margins = 4,
+                    },
+                },
+                {
+                    s.mytasklist, -- Middle widget
+                    widget = wibox.container.margin,
+                    left = 5,
+                    right = 5,
+                },
+                { -- Right widgets
+                    layout = wibox.layout.fixed.horizontal,
+                    status_box_rounded("/bin/sh -c ~/scripts/bar_wifi.sh", " ", 1),
+                    status_box_rounded("/bin/sh -c ~/scripts/bar_vpn.sh", "", 1),
+                    box_rounded(
+                        awful.widget.watch("/bin/sh -c ~/scripts/bar_weather.sh", 1800),
+                        beautiful.bg_secondary, beautiful.fg_secondary
+                    ),
+                    box_rounded(
+                        awful.widget.watch("/bin/sh -c ~/scripts/bar_mem.sh", 1),
+                        beautiful.bg_secondary, beautiful.fg_secondary
+                    ),
+                    box_rounded(mytextclock,beautiful.bg_secondary, beautiful.fg_secondary),
+                    box_rounded(wibox.widget.systray(),beautiful.bg_secondary, beautiful.fg_secondary),
+                },
             },
-            widget = wibox.container.margin,
-            left = 0,
-            right = 10,
+            widget = wibox.container.background,
+            shape = widget_rect,
+            bg = "#151515"
         },
+        widget = wibox.container.margin,
+        left = 13,
+        right = 13,
+        top = 10,
     }
 end)
 -- }}}
@@ -431,6 +427,12 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
+
+    awful.key({        }, "XF86AudioRaiseVolume", function () awful.spawn(raise_volume) end,
+              { description = "Raise volume", group = "pulseaudio"}),
+
+    awful.key({        }, "XF86AudioLowerVolume", function () awful.spawn(lower_volume) end,
+              { description = "Lower volume", group = "pulseaudio"}),
 
     awful.key({ modkey }, "s",      function () awful.spawn(screenshot_script) end,
               {description = "take screenshot", group="script"}),
