@@ -34,7 +34,6 @@ fi
 
 picom &
 xset r rate 300 35 &
-nordvpn connect &
 
 awesome
- 
+#i3
