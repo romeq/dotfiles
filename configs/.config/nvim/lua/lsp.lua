@@ -37,3 +37,4 @@ lsp_config.sumneko_lua.setup{on_attach=attach_fn,}
 lsp_config.hls.setup{on_attach=attach_fn,}
 lsp_config.pyright.setup{on_attach=attach_fn,}
 lsp_config.rust_analyzer.setup{on_attach=attach_fn,}
+lsp_config.gopls.setup{on_attach=attach_fn,}
