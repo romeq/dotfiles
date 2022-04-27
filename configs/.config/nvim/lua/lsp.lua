@@ -6,12 +6,12 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
     })
 end
 
-local attach_fn = function(client)
+local attach_fn = function(client, bufnr)
+    -- Mappings.
 
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -27,7 +27,6 @@ local attach_fn = function(client)
 end
 
 local lsp_config = require'lspconfig'
-
 lsp_config.clangd.setup{
     on_attach=attach_fn,
    	cmd = { "clangd", "--background-index", "--completion-style=bundled" },
