@@ -3,7 +3,7 @@
 tun0_dir="/sys/class/net/tun0"
 
 if [ -e "$tun0_dir" ]; then
-    echo " On"
+    echo " VPN"
 else
-    echo " Off"
+    echo " VPN"
 fi

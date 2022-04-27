@@ -6,6 +6,6 @@ operstate="$(cat /sys/class/net/$interface/operstate)"
 if [ "$operstate" != "up" ]; then 
     echo "睊 Off"
 else
-    echo "  On"
+    echo "  Wi-Fi"
 fi
 
