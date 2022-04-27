@@ -49,7 +49,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, fonts and wallpapers
-local current_theme = "romeq1"
+local current_theme = "romeq"
 beautiful.init("~/.config/awesome/themes/"..current_theme.."/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
@@ -115,7 +115,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock("%H:%M %d.%m.%Y")
+local mytextclock = wibox.widget.textclock("%A %H:%M %d.%m.%Y")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -266,7 +266,7 @@ awful.screen.connect_for_each_screen(function(s)
         filter  = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
         style   = {
-            spacing = 8,
+            spacing = 6,
             shape = widget_rect,
         },
         widget_template = {
@@ -278,7 +278,7 @@ awful.screen.connect_for_each_screen(function(s)
                         align = "center",
                     },
                     widget = wibox.container.margin,
-                    left = 6,
+                    left = 8,
                 },
                 id = 'background_role',
                 widget = wibox.container.background,
@@ -333,19 +333,23 @@ awful.screen.connect_for_each_screen(function(s)
                     right = 5,
                 },
                 { -- Right widgets
-                    layout = wibox.layout.fixed.horizontal,
-                    status_box_rounded("/bin/sh -c ~/scripts/bar_wifi.sh", " ", 1),
-                    status_box_rounded("/bin/sh -c ~/scripts/bar_vpn.sh", "", 1),
-                    box_rounded(
-                        awful.widget.watch("/bin/sh -c ~/scripts/bar_weather.sh", 1800),
-                        beautiful.bg_secondary, beautiful.fg_secondary
-                    ),
-                    box_rounded(
-                        awful.widget.watch("/bin/sh -c ~/scripts/bar_mem.sh", 1),
-                        beautiful.bg_secondary, beautiful.fg_secondary
-                    ),
-                    box_rounded(mytextclock,beautiful.bg_secondary, beautiful.fg_secondary),
-                    box_rounded(wibox.widget.systray(),beautiful.bg_secondary, beautiful.fg_secondary),
+                    {
+                        layout = wibox.layout.fixed.horizontal,
+                        status_box_rounded("/bin/sh -c ~/scripts/bar_wifi.sh", " ", 1),
+                        status_box_rounded("/bin/sh -c ~/scripts/bar_vpn.sh", "", 1),
+                        box_rounded(
+                            awful.widget.watch("/bin/sh -c ~/scripts/bar_weather.sh", 1800),
+                            beautiful.bg_secondary, beautiful.fg_secondary
+                        ),
+                        box_rounded(
+                            awful.widget.watch("/bin/sh -c ~/scripts/bar_mem.sh", 1),
+                            beautiful.bg_secondary, beautiful.fg_secondary
+                        ),
+                        box_rounded(mytextclock,beautiful.bg_secondary, beautiful.fg_secondary),
+                        box_rounded(wibox.widget.systray(),beautiful.bg_secondary, beautiful.fg_secondary),
+                    },
+                    widget = wibox.container.margin,
+                    right = 2
                 },
             },
             widget = wibox.container.background,
@@ -690,7 +694,7 @@ end)
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
     local top_titlebar = awful.titlebar(c, {
-        height  = 20,
+        size        = 30,
     })
 
     -- buttons for the titlebar
@@ -718,7 +722,6 @@ client.connect_signal("request::titlebars", function(c)
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
-            awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
