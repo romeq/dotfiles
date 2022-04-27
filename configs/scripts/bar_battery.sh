@@ -1,4 +1,4 @@
-battery="BAT1" # replace your battery here
+battery="hidpp_battery_0" # replace your battery here
 battery_capacity="$(cat /sys/class/power_supply/$battery/capacity)"
 battery_status="$(cat /sys/class/power_supply/$battery/status)"
 model="$(cat /sys/class/power_supply/$battery/model_name | awk '{print $1" "$2}' | xargs)"
