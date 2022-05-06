@@ -49,7 +49,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, fonts and wallpapers
-local current_theme = "romeq"
+local current_theme = "gruvbox"
 beautiful.init("~/.config/awesome/themes/"..current_theme.."/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
@@ -295,7 +295,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({
         position = "top",
-        height = 45,
+        height = 50,
         bg = "#0000000",
         screen = s,
     })
@@ -354,11 +354,11 @@ awful.screen.connect_for_each_screen(function(s)
             },
             widget = wibox.container.background,
             shape = widget_rect,
-            bg = "#151515"
+            bg = beautiful.bg_bar,
         },
         widget = wibox.container.margin,
-        left = 13,
-        right = 13,
+        left = 20,
+        right = 20,
         top = 10,
     }
 end)
