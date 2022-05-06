@@ -36,8 +36,9 @@ alias l="exa"
 alias lf="exa -l"
 alias grep="grep --color"
 alias ntmp="cd `mktemp -d`"
-alias lock="i3lock -i ~/.wallpapers/leaves-hard.jpg -n"
+
 alias newtmux="tmux new-session -s "
+alias less="less -R"
 
 # functions
 findpkg() {
