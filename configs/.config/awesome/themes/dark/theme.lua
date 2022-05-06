@@ -89,7 +89,7 @@ theme.menu_width  = dpi(130)
 --theme.bg_widget = "#cc0000"
 
 -- Define the wallpaper
-theme.wallpaper = themes_path..current_theme.."/background.png"
+theme.wallpaper = themes_path..current_theme.."/background.jpg"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
