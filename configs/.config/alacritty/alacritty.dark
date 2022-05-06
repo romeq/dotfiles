@@ -1,9 +1,9 @@
 colors:
   primary:
-    background:        &background '#1c1c1c'
-    foreground:        '#e8bc9b'
-    bright_foreground: '#ddb89b'
-    dim_foreground:    '#a89984'
+    background:        &background '#121212'
+    foreground:        '#c6bc99'
+    bright_foreground: '#c6bc99'
+    dim_foreground:    '#c6bc99'
   cursor:
     text:   CellBackground
     cursor: CellForeground
