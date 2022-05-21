@@ -335,14 +335,14 @@ awful.screen.connect_for_each_screen(function(s)
                 { -- Right widgets
                     {
                         layout = wibox.layout.fixed.horizontal,
-                        status_box_rounded("/bin/sh -c ~/scripts/bar_wifi.sh", " ", 1),
-                        status_box_rounded("/bin/sh -c ~/scripts/bar_vpn.sh", "", 1),
+                        status_box_rounded("/bin/sh -c ~/scripts/bar/wifi.sh", " ", 1),
+                        status_box_rounded("/bin/sh -c ~/scripts/bar/vpn.sh", "", 1),
                         box_rounded(
-                            awful.widget.watch("/bin/sh -c ~/scripts/bar_weather.sh", 1800),
+                            awful.widget.watch("/bin/sh -c ~/scripts/bar/weather.sh", 1800),
                             beautiful.bg_secondary, beautiful.fg_secondary
                         ),
                         box_rounded(
-                            awful.widget.watch("/bin/sh -c ~/scripts/bar_mem.sh", 1),
+                            awful.widget.watch("/bin/sh -c ~/scripts/bar/mem.sh", 1),
                             beautiful.bg_secondary, beautiful.fg_secondary
                         ),
                         box_rounded(mytextclock,beautiful.bg_secondary, beautiful.fg_secondary),
