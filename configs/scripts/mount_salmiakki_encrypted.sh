@@ -3,15 +3,16 @@
 uid=$(id -u "$USER")
 if [ "$uid" -gt 0 ]; then
     echo "warning: not root" > /dev/stderr
+    exit 1
 elif [ $# -lt 1 ]; then
-    echo "usage: $0 <mount [device (default: /dev/sdb2)] / unmount>"
+    echo "usage: $0 <mount [device (default: /dev/sdb2)] / eject>"
     exit 2
 fi
 
 device="$2"
 [ -z "$device" ] && device="/dev/sdb2"
-decrypted_mount_path="/dev/mapper/salmiakki_encrypted"
-mntpath="/mnt/salmiakki_s"
+decrypted_mount_path="/dev/mapper/salmiakkide"
+mntpath="/mnt/salmiakkide"
 
 if [ "$1" = "mount" ]; then
     mkdir -p "$mntpath"
@@ -26,9 +27,20 @@ if [ "$1" = "mount" ]; then
 
     fi
 
-    cryptsetup open "$device" salmiakki_encrypted
-    mount "$decrypted_mount_path" "$mntpath"
+    if ! cryptsetup open "$device" salmiakkide; then
+        exit 1
+    fi
+    if ! mount "$decrypted_mount_path" "$mntpath"; then
+        exit 1
+    fi
 
-elif [ "$1" = "unmount" ]; then
-    cryptsetup close salmiakki_encrypted
+elif [ "$1" = "eject" ]; then
+    if ! umount /mnt/salmiakkide; then
+        exit 1
+    fi
+    if ! cryptsetup close salmiakkide; then
+        exit 1
+    fi
+else
+    echo "unknown option \"$1\"" 2>/dev/stderr
 fi
