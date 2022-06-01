@@ -2,11 +2,18 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
-    use 'morhetz/gruvbox'
+    --use 'morhetz/gruvbox'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'ms-jpq/coq_nvim', branch = 'coq' }
     use 'neovim/nvim-lspconfig'
-    use { 'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps' }
+    use 'sjl/badwolf'
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+          'kyazdani42/nvim-web-devicons', -- optional, for file icon
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
     use {
         'nvim-telescope/telescope.nvim',
         requires = { {'nvim-lua/plenary.nvim'} }
@@ -20,5 +27,7 @@ return require('packer').startup(function()
         requires = { 'nvim-lua/plenary.nvim' },
         config = require('crates_config')
     }
+    use 'elkowar/yuck.vim'
+    use 'rktjmp/lush.nvim'
 end)
 
