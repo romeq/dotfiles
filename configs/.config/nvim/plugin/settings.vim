@@ -23,5 +23,5 @@ autocmd BufNewFile  *.c     0r   ~/.config/nvim/templates/template.c
 autocmd BufNewFile  *.py    0r   ~/.config/nvim/templates/template.py
 
 " binds
-nnoremap gh :tabnext<CR>
-nnoremap gl :tabprevious<CR>
+nnoremap gh :tabprevious<CR>
+nnoremap gl :tabnext<CR>
