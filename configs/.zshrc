@@ -1,7 +1,7 @@
 autoload -U colors && colors
 
-HISTSIZE=2000
-SAVEHIST=2000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
@@ -12,14 +12,6 @@ _comp_options+=(globdots)
 
 # zsh prompt
 PROMPT="%B%{$fg[green]%}%1~%{$reset_color%} %# %b"
-
-# bindkeys
-## ctrl+right arrow to move cursor forward one word
-## ctrl+left arrow to move cursor one word backward
-## ctrl+a to line start
-## ctrl+e to line end
-## ctrl+k to delete all charecters from right of the cursor
-## ctrl+o to act as "enter" (e.g. accept current line) 
 
 bindkey "^[[1;5C" forward-word 
 bindkey "^[[1;5D" backward-word
@@ -50,8 +42,8 @@ export EDITOR="nvim"
 export PATH="$PATH:$HOME/.local/bin:$HOME/scripts"
 
 # plugins
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias luamake=/home/rmq/git/lua-language-server/3rd/luamake/luamake
