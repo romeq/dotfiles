@@ -117,41 +117,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 local mytextclock = wibox.widget.textclock("%A %H:%M %d.%m.%Y")
 
--- Create a wibox for each screen and add it
-local taglist_buttons = gears.table.join(
-    awful.button({ }, 1, function(t) t:view_only() end),
-    awful.button({ modkey }, 1, function(t)
-        if client.focus then
-            client.focus:move_to_tag(t)
-        end
-    end),
-    awful.button({ }, 3, awful.tag.viewtoggle),
-    awful.button({ modkey }, 3, function(t)
-        if client.focus then
-            client.focus:toggle_tag(t)
-        end
-    end),
-    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end))
-
-local tasklist_buttons = gears.table.join(
-    awful.button({ }, 1, function (c)
-        c:emit_signal(
-            "request::activate",
-            "tasklist",
-            {raise = true}
-        )
-    end),
-    awful.button({ }, 3, function()
-        awful.menu.client_list({ theme = { width = 250 } })
-    end),
-    awful.button({ }, 4, function ()
-        awful.client.focus.byidx(1)
-    end),
-    awful.button({ }, 5, function ()
-        awful.client.focus.byidx(-1)
-    end)
-)
 
 local function set_wallpaper(s)
     -- Wallpaper
@@ -170,7 +135,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 
 local widget_rect = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 2)
+    gears.shape.rounded_rect(cr, width, height, 4)
 end
 
 local box_rounded = function(w,bg,fg)
@@ -188,8 +153,8 @@ local box_rounded = function(w,bg,fg)
             shape = widget_rect, bg = bg, fg = fg,
         },
         widget = wibox.container.margin,
-        top = 4,
-        bottom = 4,
+        top = 5,
+        bottom = 5,
         left = 3,
         right= 3
     }
@@ -210,6 +175,7 @@ local status_box_rounded = function(command, wanted_text, interval)
         beautiful.bg_secondary, beautiful.fg_secondary
     )
 end
+
 
 awful.screen.connect_for_each_screen(function(s)
     -- Set wallpaper
@@ -234,63 +200,65 @@ awful.screen.connect_for_each_screen(function(s)
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
         style   = {
-            shape = widget_rect,
+            shape = gears.shape.circle,
         },
         widget_template = {
             {
                 {
                     {
                         {
-                            id     = 'text_role',
-                            widget = wibox.widget.textbox,
+                            widget = wibox.container.margin,
+                            margins = 5,
                         },
-                        layout = wibox.layout.fixed.horizontal,
+                        widget = wibox.container.background,
+                        id = "background_role",
                     },
-                    left  = 7,
-                    right = 7,
+                    margins  = 5,
+                    left = 6,
+                    right = 6,
                     widget = wibox.container.margin,
                 },
-                id     = 'background_role',
                 widget = wibox.container.background,
+                --bg = beautiful.bg_bar,
             },
+
             widget = wibox.container.margin,
-            top = 3,
-            bottom = 3,
+            top = 4,
+            bottom = 4,
         },
-        buttons = taglist_buttons,
     }
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons,
-        style   = {
-            spacing = 6,
-            shape = widget_rect,
-        },
-        widget_template = {
-            {
-                {
-                    {
-                        id  = "text_role",
-                        widget  = wibox.widget.textbox,
-                        align = "center",
-                    },
-                    widget = wibox.container.margin,
-                    left = 8,
-                },
-                id = 'background_role',
-                widget = wibox.container.background,
-                bg = beautiful.bg_secondary,
-                fg = beautiful.fg_secondary,
-                shape = widget_rect,
-            },
-            widget = wibox.container.margin,
-            top = 4,
-            bottom = 4
-        }
-    }
+    --s.mytasklist = awful.widget.tasklist {
+    --    screen  = s,
+    --    filter  = awful.widget.tasklist.filter.currenttags,
+    --    buttons = tasklist_buttons,
+    --    style   = {
+    --        spacing = 6,
+    --        shape = widget_rect,
+    --    },
+    --    widget_template = {
+    --        {
+    --            {
+    --                {
+    --                    id  = "text_role",
+    --                    widget  = wibox.widget.textbox,
+    --                    align = "center",
+    --                },
+    --                widget = wibox.container.margin,
+    --                left = 8,
+    --            },
+    --            id = 'background_role',
+    --            widget = wibox.container.background,
+    --            bg = beautiful.bg_secondary,
+    --            fg = beautiful.fg_secondary,
+    --            shape = widget_rect,
+    --        },
+    --        widget = wibox.container.margin,
+    --        top = 4,
+    --        bottom = 4
+    --    }
+    --}
 
     -- Create the wibox
     s.mywibox = awful.wibar({
@@ -323,14 +291,13 @@ awful.screen.connect_for_each_screen(function(s)
                             shape = widget_rect,
                         },
                         widget = wibox.container.margin,
-                        margins = 4,
+                        margins = 5,
                     },
                 },
                 {
-                    s.mytasklist, -- Middle widget
                     widget = wibox.container.margin,
-                    left = 5,
-                    right = 5,
+                    left = 3,
+                    right = 3,
                 },
                 { -- Right widgets
                     {
@@ -357,8 +324,8 @@ awful.screen.connect_for_each_screen(function(s)
             bg = beautiful.bg_bar,
         },
         widget = wibox.container.margin,
-        left = 20,
-        right = 20,
+        left = 250,
+        right = 250,
         top = 10,
     }
 end)

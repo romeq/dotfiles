@@ -8,15 +8,15 @@ local current_theme = "gruvbox"
 
 local theme = {}
 
-theme.font          = "CaskaydiaCove Nerd Font 11"
+theme.font          = "CaskaydiaCove Nerd Font 10"
 
 theme.hex_transparency = "f6"
 theme.bg_normal     = "#282828" -- Normal, used in elements in unfocused state
 theme.bg_secondary  = theme.bg_normal .. theme.hex_transparency -- Secondary, used in widgets
-theme.bg_focus      = "#3c3836" -- Focused, used in focused widgets
+theme.bg_focus      = "#2e2e2e" -- Focused, used in focused widgets
 theme.bg_focus_alt  = theme.bg_focus .. theme.hex_transparency
 theme.bg_bar        = "#151515" -- Bar, used in bar
-theme.bg_urgent     = "#282828"
+theme.bg_urgent     = "#d65d0e"
 theme.bg_minimize   = "#282828"
 theme.bg_systray    = theme.bg_normal
 
@@ -28,20 +28,16 @@ theme.fg_minimize   = "#ebdbb2"
 theme.fg_green      = "#6fba72"
 theme.fg_red        = "#db3232"
 
-theme.useless_gap   = dpi(10)
+theme.useless_gap   = dpi(6)
 theme.border_width  = dpi(0)
 theme.border_normal = theme.bg_normal
 theme.border_focus = theme.bg_focus
 
--- Tasklist
-theme.tasklist_bg_normal = theme.bg_secondary
-theme.tasklist_fg_normal = theme.fg_secondary
-theme.tasklist_bg_focus = theme.bg_focus_alt
-
 -- Taglist
-theme.taglist_bg_normal = theme.bg_secondary
-theme.taglist_fg_normal = theme.fg_secondary
-theme.taglist_fg_focus = theme.fg_focus
+theme.taglist_bg_focus = "#e2cc6a"
+theme.taglist_bg_urgent = "#876162"
+theme.taglist_bg_occupied = "#759369"
+theme.taglist_bg_empty = "#4e594c"
 
 -- There are other variable sets
 -- overriding the  one when
@@ -57,13 +53,6 @@ theme.taglist_fg_focus = theme.fg_focus
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
-)
 
 -- Variables set for theming notifications:
 -- notification_font
