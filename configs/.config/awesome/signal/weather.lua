@@ -11,7 +11,12 @@ local function get_weather()
     local headers, stream = assert(request.new_from_uri(uri):go())
     local body = assert(stream:get_body_as_string())
     if headers:get ":status" ~= "200" then
-        naughty.notify({})
+        return {
+            location = "Unknown",
+            description = "Unknown",
+            temp = 0,
+            feelslike = 0,
+        }
     end
     local weather = json.decode(body)
 
