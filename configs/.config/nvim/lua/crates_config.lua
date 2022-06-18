@@ -1,4 +1,4 @@
-require('crates').setup {
+require("crates").setup({
     smart_insert = true,
     avoid_prerelease = true,
     autoload = true,
@@ -63,8 +63,9 @@ require('crates').setup {
     },
     cmp = {
         text = {
-            prerelease = "  pre-release ",
+          prerelease = "  pre-release ",
             yanked = "  yanked ",
         },
     },
-}
+})
+
