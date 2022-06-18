@@ -1,4 +1,3 @@
-local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
@@ -11,24 +10,26 @@ local theme = {}
 theme.font          = "CaskaydiaCove Nerd Font 10"
 
 theme.hex_transparency = "f6"
-theme.bg_normal     = "#282828" -- Normal, used in elements in unfocused state
-theme.bg_secondary  = theme.bg_normal .. theme.hex_transparency -- Secondary, used in widgets
-theme.bg_focus      = "#2e2e2e" -- Focused, used in focused widgets
+theme.bg_normal     = "#282828"
+theme.bg_trnormal   = theme.bg_normal .. theme.hex_transparency
+theme.bg_focus      = "#2e2e2e"
 theme.bg_focus_alt  = theme.bg_focus .. theme.hex_transparency
-theme.bg_bar        = "#151515" -- Bar, used in bar
+theme.bg_widget     = "#161819" -- Big widget background
 theme.bg_urgent     = "#d65d0e"
-theme.bg_minimize   = "#282828"
+theme.bg_minimize   = "#333333"
+theme.bg_graph      = "#3c3836"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#ebdbb2" -- Normal, used in elements in unfocused state
-theme.fg_secondary  = "#ebdbb2" -- Secondary, used in bar widgets
+theme.fg_secondary  = "#bdae93" -- Secondary, used in bar widgets
 theme.fg_focus      = "#fbf1c7" -- Focused, used in focused widgets
 theme.fg_urgent     = "#d65d0e"
 theme.fg_minimize   = "#ebdbb2"
-theme.fg_green      = "#6fba72"
+theme.fg_green      = "#8EC07C"
 theme.fg_red        = "#db3232"
+theme.fg_orange     = "#d65d0e"
 
-theme.useless_gap   = dpi(6)
+theme.useless_gap   = dpi(4.9)
 theme.border_width  = dpi(0)
 theme.border_normal = theme.bg_normal
 theme.border_focus = theme.bg_focus
@@ -69,7 +70,7 @@ theme.notification_width = dpi(500)
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path..current_theme.."/submenu.png"
-theme.menu_height = dpi(18)
+theme.menu_height = dpi(50)
 theme.menu_width  = dpi(130)
 
 -- You can add as many variables as
@@ -79,6 +80,9 @@ theme.menu_width  = dpi(130)
 
 -- Define the wallpaper
 theme.wallpaper = themes_path..current_theme.."/background.png"
+
+theme.icon_weather = themes_path..current_theme.."/icons/sun-clouds.png"
+theme.icon_wifi = themes_path..current_theme.."/icons/wifi-solid.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
