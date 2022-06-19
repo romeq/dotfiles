@@ -4,9 +4,12 @@ Configuration files for software I use.
 ## Installation
 Installing dependencies:
 ```sh
-sudo pacman -S git stow luarocks
-sudo luarocks install lunajson http
+sudo pacman -S git stow luarocks m4 flameshot
+sudo luarocks install lunajson
+sudo luarocks install http
 ```
+
+__NOTE__: You need to install awesomewm from AUR repositories (awesome-git).
 
 Installing [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```sh
