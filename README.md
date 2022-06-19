@@ -9,7 +9,7 @@ sudo luarocks install lunajson
 sudo luarocks install http
 ```
 
-__NOTE__: You need to install awesomewm from AUR repositories (awesome-git).
+__NOTE__: You need to install awesomewm from AUR (awesome-git).
 
 Installing [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```sh
