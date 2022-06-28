@@ -1,3 +1,7 @@
+local modules = require("ui.modules")
+local wibox = require("wibox")
+local beautiful = require("beautiful")
+
 -- Textboxes
 local vpn_title = wibox.widget({
     {
@@ -39,6 +43,6 @@ local vpnbox = wibox.widget({
     },
     widget = wibox.container.background,
     bg = beautiful.bg_normal,
-    shape = widget_rect,
+    shape = modules.widget_rect,
 })
 return vpnbox

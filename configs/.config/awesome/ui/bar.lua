@@ -1,4 +1,8 @@
 local wibox = require("wibox")
+local modules = require("ui.modules")
+local awful = require("awful")
+local gears = require("gears")
+local beautiful = require("beautiful")
 
 awful.screen.connect_for_each_screen(function(s)
     -- Set wallpaper
@@ -57,15 +61,22 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the bar
     s.mywibox = awful.wibar({
         position = "top",
-        height = 50,
+        height = 55,
         bg = beautiful.bg_widget .. "00",
         screen = s,
     })
 
+    local battery = wibox.widget.textbox("Battery: 0%")
+
+    awesome.connect_signal("signal::battery", function(capacity, status)
+        battery:set_text("  " .. status .. ", " .. tostring(capacity) .. "%")
+    end)
+
+
     local clock = wibox.widget{
-        widget = box_rounded({
+        widget = modules.box_rounded({
             widget = wibox.widget.textclock,
-            format = "%H:%M",
+            format = "%A, %H:%M",
         }, nil, nil),
         buttons = {
             awful.button({}, 1, nil, function()
@@ -96,7 +107,7 @@ awful.screen.connect_for_each_screen(function(s)
                                 widget = wibox.container.background,
                                 bg = beautiful.bg_normal,
                                 fg = beautiful.fg_secondary,
-                                shape = widget_rect,
+                                shape = modules.widget_rect,
                             },
                             widget = wibox.container.margin,
                             top = 5,
@@ -111,14 +122,15 @@ awful.screen.connect_for_each_screen(function(s)
                 { -- Right widgets
                     {
                         layout = wibox.layout.fixed.horizontal,
-                        box_rounded(wibox.widget.systray(), beautiful.bg_secondary, beautiful.fg_secondary),
+                        modules.box_rounded(battery),
+                        modules.box_rounded(wibox.widget.systray(), beautiful.bg_secondary, beautiful.fg_secondary),
                     },
                     widget = wibox.container.margin,
                     right = 3
                 },
             },
             widget = wibox.container.background,
-            shape = widget_rect,
+            shape = modules.widget_rect,
             bg = beautiful.bg_widget,
         },
         widget = wibox.container.margin,

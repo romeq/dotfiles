@@ -1,4 +1,4 @@
-defaultapps = {
+local defaultapps = {
     default = {
         terminal = "alacritty",
         web_browser = "firefox",

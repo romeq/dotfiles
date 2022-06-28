@@ -1,16 +1,16 @@
 local defaultapps = require("configuration.defaultapps")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local awful = require("awful")
+local music_utils = require("utils.music")
 
-modkey = "Mod4"
-alt = "Mod1"
+local modkey = "Mod4"
+local alt = "Mod1"
 
 awful.keyboard.append_global_keybindings({
-    awful.key({ modkey, "Shift" },  "s",
-        hotkeys_popup.show_help,
-        {description="show help", group="awesome"}),
+    awful.key({ modkey, "Shift" },  "s", function() hotkeys_popup.show_help() end,
+    {description="show help", group="awesome"}),
 
-    awful.key({ modkey }, "Left",
-        awful.tag.viewprev,
+    awful.key({ modkey }, "Left", awful.tag.viewprev,
         {description = "view previous", group = "tag"}),
 
     awful.key({ modkey }, "Right",
@@ -54,7 +54,7 @@ awful.keyboard.append_global_keybindings({
         awful.client.urgent.jumpto,
         {description = "jump to urgent client", group = "client"}),
 
-    awful.key({ alt }, "Tab", function ()
+    awful.key({ modkey }, "Tab", function ()
         awful.client.focus.history.previous()
         if client.focus then
             client.focus:raise()
@@ -65,6 +65,14 @@ awful.keyboard.append_global_keybindings({
     awful.key({ modkey, "Shift" }, "d", function()
         dashboard:toggle()
     end, {description = "show dashboard", group = "hotkey"}),
+
+    awful.key({ modkey, "Shift" }, "a", function()
+        awful.spawn(defaultapps.default.web_browser .. "\"https://open.spotify.com\"")
+    end, {description = "open spotify in default browser", group="hotkey"}),
+
+    awful.key({ modkey, "Shift" }, "w", function()
+        awful.spawn(defaultapps.default.web_browser)
+    end, {description = "open default browser", group="hotkey"}),
 
     awful.key({ modkey }, "Return", function()
         awful.spawn(defaultapps.default.terminal)
@@ -134,6 +142,19 @@ awful.keyboard.append_global_keybindings({
     awful.key({ modkey }, "r", function ()
         awful.spawn(defaultapps.default.app_launcher) 
     end, {description = "run prompt", group = "launcher"}),
+
+    awful.key({}, "XF86MonBrightnessUp", function()
+        awful.spawn("brightnessctl s +3%")
+    end),
+
+    awful.key({}, "XF86MonBrightnessDown", function()
+        awful.spawn("brightnessctl s 3%-")
+    end),
+
+    awful.key({}, "XF86AudioPlay", music_utils.toggle_music),
+    awful.key({}, "XF86AudioStop", music_utils.stop_music),
+    awful.key({}, "XF86AudioPrev", music_utils.previous_song),
+    awful.key({}, "XF86AudioNext", music_utils.next_song)
 
 })
 
@@ -238,3 +259,16 @@ awful.keyboard.append_global_keybindings({
 		end,
 	}),
 })
+client.connect_signal("request::default_mousebindings", function()
+    awful.mouse.append_client_mousebindings({
+        awful.button({ }, 1, function (c)
+            c:activate { context = "mouse_click" }
+        end),
+        awful.button({ modkey }, 1, function (c)
+            c:activate { context = "mouse_click", action = "mouse_move"  }
+        end),
+        awful.button({ modkey }, 3, function (c)
+            c:activate { context = "mouse_click", action = "mouse_resize"}
+        end),
+    })
+end)
