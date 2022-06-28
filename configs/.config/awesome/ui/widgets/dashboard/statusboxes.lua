@@ -31,16 +31,25 @@ local cpuchart = wibox.widget({
 })
 
 local cpuusage = wibox.widget({
+
     {
-        cpuchart,
-        widget = wibox.container.mirror,
-        reflection = {
-            horizontal = true,
-            vertical = false,
-        },
+        widget = wibox.widget.textbox,
+        text = "CPU Usage",
+        font = "Open Sans Semibold 13",
     },
-    widget = wibox.container.margin,
-    margins = 35,
+    {
+        {
+            cpuchart,
+            widget = wibox.container.mirror,
+            reflection = {
+                horizontal = true,
+                vertical = false,
+            },
+        },
+        widget = wibox.container.margin,
+        margins = 35,
+    },
+    layout = wibox.layout.align.vertical,
 })
 
 awesome.connect_signal("signal::cpu", function(usage)
