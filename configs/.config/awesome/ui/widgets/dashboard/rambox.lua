@@ -1,9 +1,13 @@
+local modules = require("ui.modules")
+local wibox = require("wibox")
+local beautiful = require("beautiful")
+
 -- Create textboxes
 local ram_textbox = wibox.widget({
     widget = wibox.widget.textbox,
     text = "0 GB",
     font = "Open Sans Bold 25",
-    forced_height = 35,
+    forced_height = 50,
 })
 
 local totalram = wibox.widget({
@@ -23,15 +27,15 @@ local circlegraph = wibox.widget({
     widget = wibox.container.arcchart,
     value = 0,
     max_value = 8,
-    bg = beautiful.bg_graph,
+    bg = beautiful.bg3,
     forced_height = 10,
     forced_width = 10,
-    thickness = 5,
+    thickness = 7,
     rounded_edge = true,
     start_angle = 1.5*math.pi,
     colors = {
         beautiful.fg_orange,
-    }
+    },
 })
 
 local testbox = wibox.widget({
@@ -48,8 +52,8 @@ local testbox = wibox.widget({
         reflection = {
             horizontal = true,
             vertical = false,
-        }
-    }
+        },
+    },
 })
 
 testbox:ajust_ratio(1, 0, 0.50, 0.15)
@@ -96,7 +100,7 @@ local rambox = {
     },
     widget = wibox.container.background,
     bg = beautiful.bg_normal,
-    shape = widget_rect,
+    shape = modules.widget_rect,
 }
 
 return rambox

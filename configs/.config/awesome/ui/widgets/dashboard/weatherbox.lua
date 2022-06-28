@@ -1,7 +1,11 @@
+local modules = require("ui.modules")
+local wibox = require("wibox")
+local beautiful = require("beautiful")
+
 -- Create textboxes
 local weather_title = wibox.widget({
     widget = wibox.widget.textbox,
-    text = "Loading data",
+    text = "Weather",
     font = "Open Sans Semibold 13",
 })
 
@@ -9,10 +13,10 @@ local weather_temp = wibox.widget({
     widget = wibox.widget.textbox,
     text = "0°",
     font = "Open Sans Bold 25",
-    forced_height = 35,
+    forced_height = 50,
 })
 
-local weather_highest = wibox.widget({
+local weather_feelslike = wibox.widget({
     widget = wibox.widget.textbox,
     text = "Highest 0°",
     font = "Open Sans 10",
@@ -38,7 +42,7 @@ local testbox = wibox.widget({
     {
         layout = wibox.layout.align.vertical,
         weather_temp,
-        weather_highest,
+        weather_feelslike,
     },
     weathericon,
 })
@@ -49,7 +53,7 @@ awesome.connect_signal("signal::weather", function(weatherdata)
     weather_title:set_text("Weather in " .. weatherdata.location)
     weather_description:set_text(weatherdata.description)
     weather_temp:set_text(tostring(weatherdata.temp).."°")
-    weather_highest:set_text(
+    weather_feelslike:set_text(
         "Feels like " .. tostring(weatherdata.feelslike) .. "°"
     )
 end)
@@ -77,7 +81,7 @@ local rambox = {
     },
     widget = wibox.container.background,
     bg = beautiful.bg_normal,
-    shape = widget_rect,
+    shape = modules.widget_rect,
 }
 
 return rambox

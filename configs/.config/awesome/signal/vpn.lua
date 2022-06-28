@@ -1,9 +1,10 @@
 local config = require("configuration/config")
+local gears = require("gears")
 
 local function update_vpn_data()
     local vpn_connected = false
-    local fhandle = io.open("/sys/class/net/" .. config.vpn.interface .. "/operstate")
-    if fhandle ~= nil then
+    local fhandle = io.open("/sys/class/net/" .. config.vpn_interface .. "/operstate")
+    if fhandle then
         vpn_connected = true
     end
 

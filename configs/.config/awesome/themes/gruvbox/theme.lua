@@ -17,8 +17,10 @@ theme.bg_focus_alt  = theme.bg_focus .. theme.hex_transparency
 theme.bg_widget     = "#161819" -- Big widget background
 theme.bg_urgent     = "#d65d0e"
 theme.bg_minimize   = "#333333"
-theme.bg_graph      = "#3c3836"
 theme.bg_systray    = theme.bg_normal
+theme.bg_wallpaper  = "#1d2021"
+theme.bg3           = "#3c3836"
+theme.bg4           = "#504945"
 
 theme.fg_normal     = "#ebdbb2" -- Normal, used in elements in unfocused state
 theme.fg_secondary  = "#bdae93" -- Secondary, used in bar widgets
@@ -28,6 +30,9 @@ theme.fg_minimize   = "#ebdbb2"
 theme.fg_green      = "#8EC07C"
 theme.fg_red        = "#db3232"
 theme.fg_orange     = "#d65d0e"
+theme.fg_blue       = "#458588"
+theme.fg_yellow     = "#d79921"
+theme.fg_purple     = "#b16286"
 
 theme.useless_gap   = dpi(4.9)
 theme.border_width  = dpi(0)
@@ -80,9 +85,13 @@ theme.menu_width  = dpi(130)
 
 -- Define the wallpaper
 theme.wallpaper = themes_path..current_theme.."/background.png"
+theme.dashboard_image = theme.wallpaper
 
 theme.icon_weather = themes_path..current_theme.."/icons/sun-clouds.png"
-theme.icon_wifi = themes_path..current_theme.."/icons/wifi-solid.png"
+theme.icon_play = themes_path..current_theme.."/icons/play.svg"
+theme.icon_pause = themes_path..current_theme.."/icons/pause.svg"
+theme.icon_skip = themes_path..current_theme.."/icons/skip-forward.svg"
+theme.icon_previous = themes_path..current_theme.."/icons/skip-back.svg"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

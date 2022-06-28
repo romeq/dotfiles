@@ -1,12 +1,12 @@
 return {
     weatherapi = {
         apikey = "",
-        city = "Espoo",
+        city = "denia",
     },
-    wifi = {
-        interface = "wlan0",
+    cache = {
+        weather = "/tmp/awesome_weather_cache.json",
     },
-    vpn = {
-        interface = "tun0",
-    },
+    wifi_interface = "wlan0",
+    vpn_interface = "nordlynx",
+    battery = "BAT0",
 }

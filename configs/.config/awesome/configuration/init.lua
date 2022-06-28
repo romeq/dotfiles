@@ -1,8 +1,7 @@
-awful = require("awful")
-beautiful = require("beautiful")
-wibox = require("wibox")
-naughty = require("naughty")
-hotkeys_popup = require("awful.hotkeys_popup")
+local awful = require("awful")
+local beautiful = require("beautiful")
+local gears = require("gears")
+local wibox = require("wibox")
 
 require("awful.autofocus")
 require("configuration.errorhandling")
@@ -44,16 +43,25 @@ awful.rules.rules = {
 }
 
 function set_wallpaper(s)
-    if beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
-        if type(wallpaper) == "function" then
-            wallpaper = wallpaper(s)
-        end
-        gears.wallpaper.maximized(wallpaper, s, true)
-    end
+    awful.wallpaper {
+        screen = s,
+        bg = beautiful.bg_wallpaper,
+        widget = {
+            {
+                image = beautiful.wallpaper,
+                resize = true,
+                widget = wibox.widget.imagebox,
+            },
+            valign = "center",
+            halign = "center",
+            tiled = false,
+            widget = wibox.container.tile,
+        },
+    }
 end
 
-screen.connect_signal("property::geometry", set_wallpaper)
+screen.connect_signal("request::wallpaper", set_wallpaper)
+
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 client.connect_signal("mouse::enter", function(c)
@@ -65,17 +73,4 @@ client.connect_signal("manage", function (c)
       and not c.size_hints.program_position then
         awful.placement.no_offscreen(c)
     end
-end)
-client.connect_signal("request::default_mousebindings", function()
-    awful.mouse.append_client_mousebindings({
-        awful.button({ }, 1, function (c)
-            c:activate { context = "mouse_click" }
-        end),
-        awful.button({ modkey }, 1, function (c)
-            c:activate { context = "mouse_click", action = "mouse_move"  }
-        end),
-        awful.button({ modkey }, 3, function (c)
-            c:activate { context = "mouse_click", action = "mouse_resize"}
-        end),
-    })
 end)
