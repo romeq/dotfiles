@@ -16,7 +16,7 @@ if has('unnamedplus')
 endif
 filetype plugin indent on
 syntax on
-let mapleader = " "
+let mapleader = "z"
 
 " templates and extension specific commands
 autocmd BufNewFile  *.c     0r   ~/.config/nvim/templates/template.c
@@ -25,3 +25,4 @@ autocmd BufNewFile  *.py    0r   ~/.config/nvim/templates/template.py
 " binds
 nnoremap gh :tabprevious<CR>
 nnoremap gl :tabnext<CR>
+nnoremap tn :tabnew<CR>
