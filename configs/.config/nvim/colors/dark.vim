@@ -22,7 +22,7 @@ highlight! link Error ErrorMsg
 highlight Folded guifg=#ffffff guibg=#2e2e2e guisp=NONE blend=NONE gui=NONE
 highlight! link FoldColumn Folded
 highlight! link SignColumn Folded
-highlight Identifier guifg=#7cd692 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight Identifier guifg=#6ca692 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight! link Function Identifier
 highlight IncSearch guifg=NONE guibg=#4a98f3 guisp=NONE blend=NONE gui=NONE
 highlight LineNr guifg=#444444 guibg=#181818 guisp=NONE blend=NONE gui=NONE
@@ -36,21 +36,22 @@ highlight Pmenu guifg=#eeeeee guibg=#333333 guisp=NONE blend=NONE gui=NONE
 highlight! link PmenuSbar Pmenu
 highlight! link PmenuThumb PmenuSbar
 highlight PmenuSel guifg=#333333 guibg=#999999 guisp=NONE blend=NONE gui=NONE
-highlight PreProc guifg=#3e5487 guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight PreProc guifg=#9e7487 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Question guifg=#ef8f44 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight QuickFixLine guifg=#fafaa0 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight! link Search QuickFixLine
+highlight Special guifg=#cc7537 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight SpellBad guifg=NONE guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight SpellCap guifg=NONE guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight SpellLocal guifg=NONE guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight SpellRare guifg=NONE guibg=NONE guisp=NONE blend=NONE gui=NONE
-highlight Statement guifg=#d8884b guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight Statement guifg=#a8884b guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight StatusLine guifg=#888888 guibg=#1a1a1a guisp=NONE blend=NONE gui=NONE
 highlight! link StatusLineNC StatusLine
 highlight Substitute guifg=#333333 guibg=#888888 guisp=NONE blend=NONE gui=NONE
 highlight TermCursorNC guifg=NONE guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Todo guifg=#a14ad3 guibg=NONE guisp=NONE blend=NONE gui=NONE
-highlight Type guifg=#d6c77c guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight Type guifg=#4565a0 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight VertSplit guifg=#212121 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Visual guifg=#eee5ea guibg=#333333 guisp=NONE blend=NONE gui=NONE
 highlight WarningMsg guifg=#ee7777 guibg=NONE guisp=NONE blend=NONE gui=NONE
