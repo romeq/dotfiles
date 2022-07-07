@@ -1,45 +1,47 @@
 local colors = {
-  black        = '#151515',
-  white        = '#888888',
-  red          = '#fb4934',
-  green        = '#b8bb26',
-  blue         = '#83a598',
-  yellow       = '#fe8019',
-  gray         = '#555555',
-  darkgray     = '#1a1a1a',
-  lightgray    = '#333333',
-  inactivegray = '#252525',
+  white        = "#9f9f9f",
+  green        = "#88ad5f",
+  blue         = "#ba7744",
+  darkgray     = "#1a1a1a",
+  lightgray    = "#333333",
+  gray         = "#222222",
 }
 
 local colorscheme = {
   normal = {
-    a = {bg = colors.gray, fg = colors.black, gui = 'bold'},
-    b = {bg = colors.lightgray, fg = colors.white},
-    c = {bg = colors.darkgray, fg = colors.gray}
+    a = {bg = colors.lightgray, fg = colors.green},
+    b = {bg = colors.gray, fg = colors.white},
+    c = {fg = colors.white},
+    x = {fg = colors.white},
+    y = {bg = colors.gray, fg = colors.white},
+    z = {bg = colors.lightgray, fg = colors.white},
   },
+  insert = {
+    a = {bg = colors.lightgray, fg = colors.blue},
+  }
 }
 
 local function get_line_count()
-    return vim.api.nvim_buf_line_count(0)
+    return "total: "..vim.api.nvim_buf_line_count(0)
 end
 
-require('lualine').setup({
+require("lualine").setup({
     options = {
         theme = colorscheme,
         icons_enabled = false,
-        component_separators = { left = '-', right = '-'},
-        section_separators = { left = '', right = ''},
+        component_separators = { left = "-", right = "-"},
+        section_separators = { left = "", right = ""},
         disabled_filetypes = {},
         always_divide_middle = true,
         globalstatus = false,
     },
     sections = {
-        lualine_a = {'mode'},
+        lualine_a = {"mode"},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'hostname'},
+        lualine_c = {"filename"},
+        lualine_x = {"hostname"},
         lualine_y = {},
-        lualine_z = {'location', get_line_count},
+        lualine_z = {"location", get_line_count},
     },
     tabline = {},
     extensions = {}
