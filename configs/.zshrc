@@ -11,10 +11,12 @@ compinit
 _comp_options+=(globdots)
 
 # zsh prompt
-PROMPT="%B%{$fg[green]%}%1~%{$reset_color%} %# %b"
+PROMPT="%B%{$fg[white]%}%1~%{$reset_color%} ➤ %b"
 
 bindkey "^[[1;5C" forward-word 
 bindkey "^[[1;5D" backward-word
+bindkey "^H" backward-char
+bindkey "^J" forward-char 
 bindkey "^A" beginning-of-line
 bindkey "^D" delete-char-or-list
 bindkey "^E" end-of-line
@@ -40,9 +42,9 @@ findpkg() {
 # env variables
 export EDITOR="nvim"
 export PATH="$PATH:$HOME/.local/bin:$HOME/scripts"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#9e8c6e"
 
 # plugins
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
