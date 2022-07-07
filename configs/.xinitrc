@@ -23,12 +23,15 @@ fi
 xset r rate 200 30 &
 
 # run some nice programs
-picom &
+nm-applet &
+blueman-applet &
+dunst &
 
 pipewire &
 pipewire-pulse &
 wireplumber &
 
+xinput set-prop 13 341 0
+
 # run window manager
-#dbus-launch --exit-with-session i3
-dbus-launch --exit-with-session awesome
+dbus-launch --exit-with-session i3
