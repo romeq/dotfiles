@@ -1,9 +1,9 @@
 colors:
   primary:
-    background:        &background '#1d2021'
-    foreground:        '#ebdbb2'
-    bright_foreground: '#ddb89b'
-    dim_foreground:    '#a89984'
+    background:        &background '#121212'
+    foreground:        '#d8c097'
+    bright_foreground: '#ccdafc'
+    dim_foreground:    '#ccdafc'
   cursor:
     text:   CellBackground
     cursor: CellForeground
@@ -27,7 +27,7 @@ colors:
     text:       CellBackground
     background: CellForeground
   bright:
-    black:   '#424242'
+    black:   '#353535'
     red:     '#e86161'
     green:   '#81d383'
     yellow:  '#fabd2f'
@@ -36,7 +36,7 @@ colors:
     cyan:    '#6dbaad'
     white:   '#efb49b'
   normal:
-    black:   '#1c1c1c'
+    black:   '#353535'
     red:     '#db3232'
     green:   '#6fba72'
     yellow:  '#ce9c37'
@@ -70,9 +70,9 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 10.5
+  size: 11.5
 
 window:
   padding:
-    x: 15
-    y: 15
+    x: 9
+    y: 9
