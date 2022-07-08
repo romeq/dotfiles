@@ -1,7 +1,7 @@
 # dotfiles
 Configuration files for software I use.
 
-## Features
+## AwesomeWM
 ![rice 1](./riisi1.png)
 ![rice 2](./riisi.png)
 
@@ -50,11 +50,5 @@ API-key should be placed in `configuration/config.lua`
 
 You can now install my dotfiles using `stow`
 ```sh
-# cloning repository, two options:
-git clone git@github.com:romeq/dotfiles.git # ssh method
-git clone https://github.com/romeq/dotfiles.git # http method
-
-# installing
-cd dotfiles
 stow -t $HOME configs
 ```
