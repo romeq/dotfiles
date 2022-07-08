@@ -1,7 +1,7 @@
-battery="hidpp_battery_0" # replace your battery here
+#!/bin/sh
+battery="BAT0" # replace your battery here
 battery_capacity="$(cat /sys/class/power_supply/$battery/capacity)"
 battery_status="$(cat /sys/class/power_supply/$battery/status)"
-model="$(cat /sys/class/power_supply/$battery/model_name | awk '{print $1" "$2}' | xargs)"
 
 emoji=""
 if [ ! "$battery_capacity" ]; then
@@ -33,7 +33,7 @@ else
 fi
 
 if [ "$battery_status" != "Unknown" ]; then
-    echo "$emoji $model: $battery_status ($battery_capacity%)"
+    echo "$emoji $battery_capacity%,$battery_status"
 else
-    echo "$emoji $model: $battery_capacity%"
+    echo "$emoji $battery_capacity%"
 fi
