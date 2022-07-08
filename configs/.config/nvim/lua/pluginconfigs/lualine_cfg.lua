@@ -11,8 +11,8 @@ local colorscheme = {
   normal = {
     a = {bg = colors.lightgray, fg = colors.green},
     b = {bg = colors.gray, fg = colors.white},
-    c = {fg = colors.white},
-    x = {fg = colors.white},
+    c = {bg = colors.darkgray, fg = colors.white},
+    x = {bg = colors.darkgray, fg = colors.white},
     y = {bg = colors.gray, fg = colors.white},
     z = {bg = colors.lightgray, fg = colors.white},
   },
@@ -22,25 +22,22 @@ local colorscheme = {
 }
 
 local function get_line_count()
-    return "total: "..vim.api.nvim_buf_line_count(0)
+    return vim.api.nvim_buf_line_count(0)
 end
 
 require("lualine").setup({
     options = {
         theme = colorscheme,
-        icons_enabled = false,
-        component_separators = { left = "-", right = "-"},
+        component_separators = { left = "", right = "/"},
         section_separators = { left = "", right = ""},
-        disabled_filetypes = {},
         always_divide_middle = true,
-        globalstatus = false,
     },
     sections = {
         lualine_a = {"mode"},
-        lualine_b = {},
-        lualine_c = {"filename"},
-        lualine_x = {"hostname"},
-        lualine_y = {},
+        lualine_b = {"filename"},
+        lualine_c = {"filesize"},
+        lualine_x = {},
+        lualine_y = {"diff", "branch"},
         lualine_z = {"location", get_line_count},
     },
     tabline = {},
