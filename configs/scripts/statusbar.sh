@@ -9,10 +9,10 @@ weather="$HOME/scripts/bar/weather.sh"
 battery="$HOME/scripts/bar/battery.sh"
 brightness="$HOME/scripts/bar/brightness.sh"
 clock="$HOME/scripts/bar/date.sh"
-bar_scripts="$volume $wifi $vpn $mem $battery $brightness $weather $clock"
+bar_scripts="$volume $wifi $vpn $mem $battery $brightness $clock"
 
 # update interval
-interval=1
+interval=5
 seperator="| "
 
 print_bar_output() {
