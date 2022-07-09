@@ -33,7 +33,7 @@ else
 fi
 
 if [ "$battery_status" != "Unknown" ]; then
-    echo "$emoji $battery_capacity%,$battery_status"
+    echo "$emoji $battery_capacity% ($battery_status)"
 else
     echo "$emoji $battery_capacity%"
 fi

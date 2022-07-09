@@ -12,7 +12,7 @@ clock="$HOME/scripts/bar/date.sh"
 bar_scripts="$volume $wifi $vpn $mem $battery $brightness $clock"
 
 # update interval
-interval=5
+interval=2
 seperator="| "
 
 print_bar_output() {
