@@ -95,5 +95,5 @@ mode "resize" {
 bindsym $mod+d mode "resize"
 bar {
     position top
-    status_command ~/scripts/statusbar.sh
+    status_command ~/scripts/bar/statusbar.sh
 }
