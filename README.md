@@ -1,6 +1,17 @@
 # dotfiles
 Configuration files for software I use.
 
+
+## Notes
+I don't use awesomewm anymore myself, and some configuration 
+files may've been developed to another direction (e.g. Alacritty's).
+I used gruvbox colorscheme in my awesomewm configuration, and
+there should be an easy way to port it to almost any application 
+as it's widely used.
+
+my `.xinitrc` starts `i3` window manager by default, and you 
+may need to edit it a little if you want to launch awesome.
+
 ## AwesomeWM
 ![rice 1](./riisi1.png)
 ![rice 2](./riisi.png)
@@ -27,7 +38,6 @@ Configuration files for software I use.
 - Volume keys
 - Media keys (play/stop, stop, previous, next)
 
-
 ## Installation
 Installing dependencies (for arch):
 ```sh
@@ -37,12 +47,6 @@ sudo luarocks install lunajson
 
 __NOTE:__ You need to install awesomewm from AUR (awesome-git) or clone the repository
 from [github](https://github.com/awesomeWM/awesome).
-
-Installing [packer.nvim](https://github.com/wbthomason/packer.nvim) for NeoVIM:
-```sh
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
 
 Weather is fetched from [weatherapi.com](https://weatherapi.com/).
 Weatherapi requires an API key, which you can get with free account.
