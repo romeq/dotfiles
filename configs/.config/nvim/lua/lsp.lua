@@ -6,7 +6,7 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
     })
 end
 
-local attach_fn = function(client, bufnr)
+local attach_fn = function(_, bufnr)
     -- Mappings.
 
     -- Enable completion triggered by <c-x><c-o>
@@ -37,3 +37,4 @@ lsp_config.hls.setup{on_attach=attach_fn,}
 lsp_config.pyright.setup{on_attach=attach_fn,}
 lsp_config.rust_analyzer.setup{on_attach=attach_fn,}
 lsp_config.gopls.setup{on_attach=attach_fn,}
+
