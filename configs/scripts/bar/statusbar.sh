@@ -9,7 +9,8 @@ weather="$HOME/scripts/bar/weather.sh"
 battery="$HOME/scripts/bar/battery.sh"
 brightness="$HOME/scripts/bar/brightness.sh"
 clock="$HOME/scripts/bar/date.sh"
-bar_scripts="$volume $wifi $vpn $mem $battery $brightness $clock"
+song="$HOME/scripts/bar/song.sh"
+bar_scripts="$volume $wifi $vpn $mem $battery $brightness $clock $song"
 
 # update interval
 interval=2
