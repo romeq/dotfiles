@@ -9,7 +9,7 @@ set expandtab
 set shiftwidth=4
 set autoindent
 set noswapfile
-set scrolloff=3
+set scrolloff=5
 set wildmode=longest,list
 set ttyfast
 set mouse+=a
