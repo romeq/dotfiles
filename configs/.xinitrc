@@ -4,7 +4,6 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-# merge in defaults and keymaps
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
 fi
@@ -20,18 +19,14 @@ fi
 if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
-xset r rate 200 30 &
+
+# keyboard stuff
+xset r rate 250 40 
 
 # run some nice programs
 nm-applet &
 blueman-applet &
-dunst &
-
-pipewire &
-pipewire-pulse &
-wireplumber &
-
-xinput set-prop 13 341 0
+picom &
 
 # run window manager
-dbus-launch --exit-with-session i3
+#dbus-run-session i3

@@ -49,6 +49,9 @@ highlight Statement guifg=#a8884b guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight StatusLine guifg=#888888 guibg=#1a1a1a guisp=NONE blend=NONE gui=NONE
 highlight! link StatusLineNC StatusLine
 highlight Substitute guifg=#333333 guibg=#888888 guisp=NONE blend=NONE gui=NONE
+highlight TabLine guifg=NONE guibg=#202020 guisp=NONE blend=NONE gui=NONE
+highlight TabLineFill guifg=NONE guibg=NONE guisp=NONE blend=NONE gui=NONE
+highlight TabLineSel guifg=#ffffff guibg=#406f40 guisp=NONE blend=NONE gui=NONE
 highlight TermCursorNC guifg=NONE guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Todo guifg=#a14ad3 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Type guifg=#4565a0 guibg=NONE guisp=NONE blend=NONE gui=NONE

@@ -14,7 +14,7 @@ bar_scripts="$volume $wifi $vpn $mem $battery $brightness $clock $song"
 
 # update interval
 interval=2
-seperator="| "
+seperator="/ "
 
 print_bar_output() {
     output_string=""
