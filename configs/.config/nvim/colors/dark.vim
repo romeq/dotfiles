@@ -1,4 +1,4 @@
-highlight Normal guifg=#d8c097 guibg=#0b0b0b guisp=NONE blend=NONE gui=NONE
+highlight Normal guifg=#d8c097 guibg=#121212 guisp=NONE blend=NONE gui=NONE
 highlight! link NormalNC Normal
 highlight ColorColumn guifg=NONE guibg=#752020 guisp=NONE blend=NONE gui=NONE
 highlight Comment guifg=#475052 guibg=NONE guisp=NONE blend=NONE gui=NONE
