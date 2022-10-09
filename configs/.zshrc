@@ -1,4 +1,6 @@
 autoload -U colors && colors
+autoload -Uz compinit
+compinit
 
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -7,7 +9,7 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
 # zsh prompt
-PROMPT="%% "
+PS1="%% "
 
 bindkey "^[[1;5C" forward-word 
 bindkey "^[[1;5D" backward-word
@@ -44,7 +46,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#9e8c6e"
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias luamake=/home/rmq/git/lua-language-server/3rd/luamake/luamake
+alias luamake=$HOME/git/lua-language-server/3rd/luamake/luamake
 [ -f "/home/rmq/.ghcup/env" ] && source "/home/rmq/.ghcup/env"
 
 eval "$(zoxide init zsh)"
@@ -52,7 +54,3 @@ eval "$(zoxide init zsh)"
 # The following lines were added by compinstall
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle :compinstall filename '/home/rmq/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall

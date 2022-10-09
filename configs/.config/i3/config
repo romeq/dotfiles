@@ -1,6 +1,5 @@
 # set variables
 set $mod Mod4
-set $wallpaper ~/.wallpaper.jpg
 
 # other
 floating_modifier $mod
@@ -14,13 +13,13 @@ gaps inner 5
 gaps outer 5
 
 # set font
-font pango:CaskaydiaCove Nerd Font 10
+font pango:JetBrainsMono Nerd Font 10
 
 # disable borders
 for_window [class="^.*"] border pixel 1
 
-# set wallpaper
-exec hsetroot -cover $wallpaper
+# startup programs
+exec --no-startup-id ~/.config/i3/startup.sh
 
 # enable screen lock
 exec --no-startup-id xss-lock --transfer-sleep-lock -- xlock
@@ -67,6 +66,8 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
+bindsym $mod+c exec --no-startup-id chromium
+bindsym $mod+m exec --no-startup-id mailspring
 
 # tags
 set $ws1 "1"
@@ -79,6 +80,9 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+client.focused #5b5618 #5b5618 #5b5618 #5b5618 #5b5618
+
 
 # bind tags
 bindsym $mod+1 workspace number $ws1
@@ -132,14 +136,4 @@ bindsym $mod+d mode "resize"
 set $bar-bg #121212
 set $bar-fg #ababab
 
-bar {
-    colors {
-        statusline $bar-fg
-        background $bar-bg
-
-        focused_workspace $bar-bg $bar-bg $bar-fg
-        inactive_workspace $bar-bg $bar-bg #777777
-    }
-    position top
-    status_command ~/scripts/bar/statusbar.sh
-}
+exec polybar tbar

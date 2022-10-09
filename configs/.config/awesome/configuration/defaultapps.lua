@@ -1,7 +1,7 @@
 local defaultapps = {
     default = {
         terminal = "alacritty",
-        web_browser = "firefox",
+        web_browser = "chromium",
         app_launcher = "dmenu_run -sb \"#3c3836\" -sf \"#ebdbb2\"",
     },
     util = {
