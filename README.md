@@ -39,6 +39,12 @@ may need to edit it a little if you want to launch awesome.
 - Media keys (play/stop, stop, previous, next)
 
 ## Installation
+Clone repo:
+```sh
+git clone -b awesomewm git@github.com:romeq/dotfiles.git
+git clone -b awesomewm https://github.com/romeq/dotfiles.git
+```
+
 Installing dependencies (for arch):
 ```sh
 sudo pacman -S git stow luarocks flameshot lua-http playerctl brightnessd picom coreutils gawk
