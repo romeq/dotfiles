@@ -1,9 +1,9 @@
 colors:
   primary:
-    background:        &background '#0b0b0b'
-    foreground:        '#d8c097'
-    bright_foreground: '#ccdafc'
-    dim_foreground:    '#ccdafc'
+    background:        &background '#1d2021'
+    foreground:        '#ebdbb2'
+    bright_foreground: '#ddb89b'
+    dim_foreground:    '#a89984'
   cursor:
     text:   CellBackground
     cursor: CellForeground
@@ -27,7 +27,7 @@ colors:
     text:       CellBackground
     background: CellForeground
   bright:
-    black:   '#353535'
+    black:   '#424242'
     red:     '#e86161'
     green:   '#81d383'
     yellow:  '#fabd2f'
@@ -36,7 +36,7 @@ colors:
     cyan:    '#6dbaad'
     white:   '#efb49b'
   normal:
-    black:   '#353535'
+    black:   '#1c1c1c'
     red:     '#db3232'
     green:   '#6fba72'
     yellow:  '#ce9c37'
@@ -47,30 +47,30 @@ colors:
 
 font:
   normal:
-    #family: CaskaydiaCove Nerd Font
-    family: JetBrains Mono Nerd Font
+    family: CaskaydiaCove Nerd Font
+    #family: JetBrains Mono Nerd Font
     style: Regular
 
   # Bold font face
   bold:
-    #family: CaskaydiaCove Nerd Font
-    family: JetBrains Mono Nerd Font
+    family: CaskaydiaCove Nerd Font
+    #family: JetBrains Mono Nerd Font
     style: Bold
 
   # Italic font face
   italic:
-    #family: CaskaydiaCove Nerd Font
-    family: JetBrains Mono Nerd Font
+    family: CaskaydiaCove Nerd Font
+    #family: JetBrains Mono Nerd Font
     style: Italic
 
   # Bold italic font face
   bold_italic:
-    #family: CaskaydiaCove Nerd Font
-    family: JetBrains Mono Nerd Font
+    family: CaskaydiaCove Nerd Font
+    #family: JetBrains Mono Nerd Font
     style: Bold Italic
 
   # Point size
-  size: 11
+  size: 10.5
 
 window:
   padding:
