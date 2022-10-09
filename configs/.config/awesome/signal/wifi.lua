@@ -16,6 +16,7 @@ local function update_wifi_data()
     local output = file:read("l")
     file:close()
 
+    output = output or "unknown"
     awesome.emit_signal("signal::wifi", line == "up", output)
 end
 

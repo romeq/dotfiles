@@ -26,7 +26,6 @@ xset r rate 250 40
 # run some nice programs
 nm-applet &
 blueman-applet &
-picom &
 
 # run window manager
 #dbus-run-session i3

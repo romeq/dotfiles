@@ -1,7 +1,7 @@
 return {
     weatherapi = {
         apikey = "758e5b803bf14e1f955164212212811",
-        city = "denia",
+        city = "espoo",
     },
     cache = {
         weather = "/tmp/awesome_weather_cache.json",
