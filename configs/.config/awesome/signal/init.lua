@@ -1,7 +1,0 @@
-require("signal.mem")
-require("signal.weather")
-require("signal.wifi")
-require("signal.music")
-require("signal.vpn")
-require("signal.battery")
-require("signal.cpu")
