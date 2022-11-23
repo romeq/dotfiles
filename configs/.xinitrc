@@ -24,8 +24,8 @@ fi
 xset r rate 250 40 
 
 # run some nice programs
-nm-applet &
-blueman-applet &
+#nm-applet &
+#blueman-applet &
 
 # run window manager
-#dbus-run-session i3
+#i3

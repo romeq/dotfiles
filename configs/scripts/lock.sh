@@ -1,1 +1,1 @@
-i3lock -c 000000 -e
+i3lock -fei ~/.lock_wp.png
