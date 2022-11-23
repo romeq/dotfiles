@@ -9,8 +9,7 @@ mouse_warping none
 focus_follows_mouse no
 
 # gaps
-gaps inner 5
-gaps outer 5
+gaps inner 10
 
 # set font
 font pango:JetBrainsMono Nerd Font 10
@@ -22,7 +21,7 @@ for_window [class="^.*"] border pixel 1
 exec --no-startup-id ~/.config/i3/startup.sh
 
 # enable screen lock
-exec --no-startup-id xss-lock --transfer-sleep-lock -- xlock
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/scripts/lock.sh
 
 # mediakey binds
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
@@ -40,7 +39,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym $mod+Return exec alacritty
 bindsym $mod+s exec --no-startup-id flameshot gui
 bindsym $mod+q kill
-bindsym $mod+Control+l exec xlock
+bindsym $mod+Control+l exec ~/scripts/lock.sh
 bindsym $mod+r exec --no-startup-id dmenu_run
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -66,7 +65,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
-bindsym $mod+c exec --no-startup-id chromium
+bindsym $mod+c exec --no-startup-id firefox
 bindsym $mod+m exec --no-startup-id mailspring
 
 # tags
@@ -136,4 +135,4 @@ bindsym $mod+d mode "resize"
 set $bar-bg #121212
 set $bar-fg #ababab
 
-exec polybar tbar
+exec polybar 

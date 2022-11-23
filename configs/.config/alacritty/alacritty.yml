@@ -33,7 +33,7 @@ colors:
     yellow:  '#fabd2f'
     blue:    '#5a8fb5'
     magenta: '#d3869b'
-    cyan:    '#6dbaad'
+    cyan:    '#81d383'
     white:   '#efb49b'
   normal:
     black:   '#353535'
@@ -42,7 +42,7 @@ colors:
     yellow:  '#ce9c37'
     blue:    '#2176b2'
     magenta: '#b16286'
-    cyan:    '#21b29a'
+    cyan:    '#6fba72'
     white:   '#af9c80'
 
 font:
