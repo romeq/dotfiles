@@ -9,7 +9,7 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
 # zsh prompt
-PROMPT="%{$fg[green]%}%1~%{$reset_color%} ﰲ "
+PROMPT="%{$fg[green]%}%~%{$reset_color%} ﰲ "
 
 bindkey "^[[1;5C" forward-word 
 bindkey "^[[1;5D" backward-word
@@ -53,7 +53,7 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 zstyle :compinstall filename '/home/rmq/.zshrc'
 
 bat=$(acpi | awk -F', ' '{print $2}')
-echo "Wasup! You've got $bat of battery left. ﳑ"
+echo "Welcome back, $USER \033[31m♥\033[0m"
 
 export NVM_DIR="$HOME/.nvm"
 source /usr/share/fzf/completion.zsh 
