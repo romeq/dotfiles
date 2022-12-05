@@ -7,9 +7,7 @@ floating_modifier $mod
 # disable mouse warping
 mouse_warping none
 focus_follows_mouse no
-
-# gaps
-gaps inner 10
+gaps inner 0
 
 # set font
 font pango:JetBrainsMono Nerd Font 10
@@ -65,7 +63,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
-bindsym $mod+c exec --no-startup-id firefox
+bindsym $mod+c exec --no-startup-id chromium
 bindsym $mod+m exec --no-startup-id mailspring
 
 # tags
@@ -80,8 +78,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-client.focused #5b5618 #5b5618 #5b5618 #5b5618 #5b5618
-
+client.focused #ffffff #ffffff #ffffff #ffffff #ffffff
 
 # bind tags
 bindsym $mod+1 workspace number $ws1
@@ -135,4 +132,5 @@ bindsym $mod+d mode "resize"
 set $bar-bg #121212
 set $bar-fg #ababab
 
-exec polybar 
+bar {
+}

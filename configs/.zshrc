@@ -9,7 +9,7 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
 # zsh prompt
-PS1="%% "
+PROMPT="%{$fg[green]%}%1~%{$reset_color%} ﰲ "
 
 bindkey "^[[1;5C" forward-word 
 bindkey "^[[1;5D" backward-word
@@ -20,18 +20,6 @@ bindkey "^D" delete-char-or-list
 bindkey "^E" end-of-line
 bindkey "^K" kill-line
 bindkey "^O" accept-line
-
-# aliases
-alias gdb="gdb -q"
-alias l="exa"
-alias lf="exa -l"
-alias grep="grep --color=always"
-alias ntmp="cd $(mktemp -d)"
-alias nvimtmp="nvim $(mktemp)"
-alias cd="z"
-alias newtmux="tmux new-session -s "
-alias less="less -R"
-alias toke="xdg-open https://trello.com/b/3VG8VyWY/dont-forget"
 
 # functions
 hostname() {
@@ -64,6 +52,12 @@ eval "$(zoxide init zsh)"
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle :compinstall filename '/home/rmq/.zshrc'
 
+bat=$(acpi | awk -F', ' '{print $2}')
+echo "Wasup! You've got $bat of battery left. ﳑ"
+
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source /usr/share/fzf/completion.zsh 
+source /usr/share/fzf/key-bindings.zsh
+source ~/.zsh_aliases
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
