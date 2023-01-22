@@ -7,6 +7,7 @@ alias ntmp="cd $(mktemp -d)"
 alias nvimtmp="nvim $(mktemp)"
 alias newtmux="tmux new-session -s "
 alias less="less -R"
+alias cd="z"
 
 alias gpl="git pull"
 alias gp="git push"
