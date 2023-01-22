@@ -65,6 +65,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+c exec --no-startup-id chromium
 bindsym $mod+m exec --no-startup-id mailspring
+bindsym $mod+Shift+d exec --no-startup-id scripts/discord-chromium.sh
 
 # tags
 set $ws1 "1"
@@ -78,7 +79,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-client.focused #ffffff #ffffff #ffffff #ffffff #ffffff
+client.focused #999999 #999999 #999999 #999999 #999999
 
 # bind tags
 bindsym $mod+1 workspace number $ws1
@@ -133,4 +134,9 @@ set $bar-bg #121212
 set $bar-fg #ababab
 
 bar {
+    status_command i3status
+    colors {
+        focused_workspace #a51d93 #a51d93 #ffffff
+        inactive_workspace #350b2f #350b2f #ffffff
+    }
 }

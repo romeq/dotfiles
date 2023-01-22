@@ -9,7 +9,7 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
 # zsh prompt
-PROMPT="%{$fg[green]%}%~%{$reset_color%} ﰲ "
+PROMPT="%{$fg[yellow]%}%~%{$reset_color%}   "
 
 bindkey "^[[1;5C" forward-word 
 bindkey "^[[1;5D" backward-word
@@ -36,7 +36,7 @@ _time_alias "paru"
 
 # env variables
 export EDITOR="nvim"
-export PATH="$PATH:$HOME/.local/bin:$HOME/scripts"
+export PATH="$PATH:$HOME/.local/bin:$HOME/scripts:$(go env GOPATH)/bin"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#9e8c6e"
 
 # plugins

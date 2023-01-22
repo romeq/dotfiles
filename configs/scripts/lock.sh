@@ -1,1 +1,1 @@
-i3lock -fei ~/.lock_wp.png
+i3lock -fec "#707070"
