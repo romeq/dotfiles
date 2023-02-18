@@ -7,7 +7,6 @@ floating_modifier $mod
 # disable mouse warping
 mouse_warping none
 focus_follows_mouse no
-gaps inner 0
 
 # set font
 font pango:JetBrainsMono Nerd Font 10
@@ -134,7 +133,7 @@ set $bar-bg #121212
 set $bar-fg #ababab
 
 bar {
-    status_command i3status
+    status_command ~/scripts/bar/statusbar.sh
     colors {
         focused_workspace #a51d93 #a51d93 #ffffff
         inactive_workspace #350b2f #350b2f #ffffff
