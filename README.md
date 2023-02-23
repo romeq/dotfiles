@@ -3,8 +3,7 @@ Configuration files for software I use.
 
 ## Download
 ```sh
-git clone -b main git@github.com:romeq/dotfiles.git
-# or...
+git clone https://github.com/romeq/scripts ~/scripts
 git clone -b main https://github.com/romeq/dotfiles.git
 ```
 
