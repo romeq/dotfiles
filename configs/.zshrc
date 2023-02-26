@@ -37,6 +37,9 @@ cded() {
     
     cd $(sudo SCRIPTMODE=1 DISK="$DISK" $cded_script -o)
 }
+cded-close() {
+    sudo "$cded_script" -c
+}
 
 # env variables
 export EDITOR="nvim"
