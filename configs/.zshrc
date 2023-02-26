@@ -25,14 +25,18 @@ bindkey "^O" accept-line
 hostname() {
     cat /etc/hostname
 }
-_time_alias() {
-    alias $1="time $1"
+
+cded_script="$HOME/scripts/encrypted-disk-workflow.sh"
+cded() {
+    if ! test $cded_script; then
+        echo "host script is not accessable" 2>/dev/null
+        return 1
+    elif [ "$#" -lt 1 ]; then
+        DISK="/dev/sda1"
+    fi
+    
+    cd $(sudo SCRIPTMODE=1 DISK="$DISK" $cded_script -o)
 }
-_time_sudo_alias() {
-    alias $1="time sudo $1"
-}
-_time_sudo_alias "pacman" 
-_time_alias "paru" 
 
 # env variables
 export EDITOR="nvim"
