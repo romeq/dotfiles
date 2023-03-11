@@ -9,7 +9,7 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
 # zsh prompt
-PROMPT="%{$fg[yellow]%}%~%{$reset_color%}   "
+PROMPT="%{$fg[black]%}%~%{$reset_color%} > "
 
 bindkey "^[[1;5C" forward-word 
 bindkey "^[[1;5D" backward-word
@@ -21,32 +21,23 @@ bindkey "^E" end-of-line
 bindkey "^K" kill-line
 bindkey "^O" accept-line
 
-# functions
-hostname() {
-    cat /etc/hostname
-}
+bat=$(acpi | awk -F', ' '{print $2}')
+echo "It's $(date +%H:%M) \033[31m♥\033[0m"
 
-cded_script="$HOME/scripts/encrypted-disk-workflow.sh"
-cded() {
-    if ! test $cded_script; then
-        echo "host script is not accessable" 2>/dev/null
-        return 1
-    elif [ "$#" -lt 1 ]; then
-        DISK="/dev/sda1"
-    fi
-    
-    cd $(sudo SCRIPTMODE=1 DISK="$DISK" $cded_script -o)
-}
-cded-close() {
-    sudo "$cded_script" -c
-}
-
-# env variables
-export EDITOR="nvim"
-export PATH="$PATH:$HOME/.local/bin:$HOME/scripts:$(go env GOPATH)/bin"
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#9e8c6e"
+export NVM_DIR="$HOME/.nvm"
+source /usr/share/fzf/completion.zsh 
+source /usr/share/fzf/key-bindings.zsh
+source ~/.zsh_aliases
+source ~/.zsh_env
+source ~/.zsh_functions
 
 # plugins
+
+# nvm
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# zsh-autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -59,12 +50,3 @@ eval "$(zoxide init zsh)"
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle :compinstall filename '/home/rmq/.zshrc'
 
-bat=$(acpi | awk -F', ' '{print $2}')
-echo "Welcome back, $USER \033[31m♥\033[0m"
-
-export NVM_DIR="$HOME/.nvm"
-source /usr/share/fzf/completion.zsh 
-source /usr/share/fzf/key-bindings.zsh
-source ~/.zsh_aliases
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

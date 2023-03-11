@@ -1,0 +1,4 @@
+export MOUNTPATH="/tmp"
+export EDITOR="nvim"
+export PATH="$PATH:$HOME/.local/bin:$HOME/scripts:$(go env GOPATH)/bin"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#9e8c6e"

@@ -47,25 +47,25 @@ colors:
 
 font:
   normal:
-    family: BlexMono Nerd Font
+    family: CaskaydiaCove Nerd Font
     #family: JetBrains Mono Nerd Font
     style: Regular
 
   # Bold font face
   bold:
-    family: BlexMono Nerd Font
+    family: CaskaydiaCove Nerd Font
     #family: JetBrains Mono Nerd Font
     style: Bold
 
   # Italic font face
   italic:
-    family: BlexMono Nerd Font
+    family: CaskaydiaCove Nerd Font
     #family: JetBrains Mono Nerd Font
     style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: BlexMono Nerd Font
+    family: CaskaydidaCove Nerd Font
     #family: JetBrains Mono Nerd Font
     style: Bold Italic
 
