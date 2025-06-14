@@ -1,1 +1,1 @@
-require("plugins")
+require("lazy.lazy")

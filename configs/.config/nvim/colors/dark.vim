@@ -1,4 +1,4 @@
-highlight Normal guifg=#d8c097 guibg=#121212 guisp=NONE blend=NONE gui=NONE
+highlight Normal guifg=#d8c097 guibg=#0b0b0b guisp=NONE blend=NONE gui=NONE
 highlight! link NormalNC Normal
 highlight ColorColumn guifg=NONE guibg=#752020 guisp=NONE blend=NONE gui=NONE
 highlight Comment guifg=#475052 guibg=NONE guisp=NONE blend=NONE gui=NONE
@@ -25,7 +25,7 @@ highlight! link SignColumn Folded
 highlight Identifier guifg=#6ca692 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight! link Function Identifier
 highlight IncSearch guifg=NONE guibg=#4a98f3 guisp=NONE blend=NONE gui=NONE
-highlight LineNr guifg=#444444 guibg=#181818 guisp=NONE blend=NONE gui=NONE
+highlight LineNr guifg=#444444 guibg=#0b0b0b guisp=NONE blend=NONE gui=NONE
 highlight! link CursorLineNr LineNr
 highlight MatchParen guifg=NONE guibg=#3e5e5e guisp=NONE blend=NONE gui=NONE
 highlight MoreMsg guifg=#7eff7e guibg=NONE guisp=NONE blend=NONE gui=NONE

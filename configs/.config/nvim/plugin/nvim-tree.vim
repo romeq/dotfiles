@@ -1,4 +1,4 @@
-lua require('pluginconfigs.nvimtree_cfg')
+lua require('configs.nvim-tree')
 " vimrc
 let g:nvim_tree_git_hl = 0 "0 by default, will enable file highlight for git attributes (can be used without the icons).
 let g:nvim_tree_highlight_opened_files = 0 "0 by default, will enable folder and file icon highlight for opened files/directories.

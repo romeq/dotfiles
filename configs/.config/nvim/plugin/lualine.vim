@@ -1,1 +1,1 @@
-lua require("pluginconfigs.lualine_cfg")
+lua require("configs.lualine")
