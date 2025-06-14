@@ -1,6 +1,5 @@
 require("crates").setup({
     smart_insert = true,
-    avoid_prerelease = true,
     autoload = true,
     autoupdate = true,
     loading_indicator = true,
@@ -62,4 +61,3 @@ require("crates").setup({
         },
     },
 })
-

@@ -1,2 +1,2 @@
-lua require("lsp")
-lua require("treesitter")
+lua require("configs.lsp.lsp")
+lua require("configs.lsp.treesitter")
