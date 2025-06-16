@@ -2,13 +2,25 @@
 Configuration files for software I use.
 
 ## Download
-```sh
-git clone https://github.com/romeq/scripts ~/scripts
-git clone -b main https://github.com/romeq/dotfiles.git
+
+### 1. Install requirements
+Requirements to be installed from your package manager:
+- Neovim: `lua luarocks git neovim`
+- General: `zsh alacritty tmux`
+- Font: Caskaydia Cove Nerd Font
+
+### 2. Prepare workspace
+
+```
+# (optional) Remove currently installed neovim packages
+rm -rf .local/share/nvim
 ```
 
+### 3. Install
 
-## Notes
-
-To view my AwesomeWM configuration (which I personally don't use for now) visit the `awesomewm` branch.
-
+```sh
+# Install
+git clone -b minimal https://github.com/romeq/dotfiles.git
+cd dotfiles
+stow -t $HOME configs
+```
