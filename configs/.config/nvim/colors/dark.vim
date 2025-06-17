@@ -31,11 +31,11 @@ highlight MatchParen guifg=NONE guibg=#3e5e5e guisp=NONE blend=NONE gui=NONE
 highlight MoreMsg guifg=#7eff7e guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight NonText guifg=#555555 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight! link SpecialKey NonText
-highlight NormalFloat guifg=#d8c097 guibg=#333333 guisp=NONE blend=NONE gui=NONE
-highlight Pmenu guifg=#eeeeee guibg=#333333 guisp=NONE blend=NONE gui=NONE
+highlight NormalFloat guifg=#d8c097 guibg=#1f1f1f guisp=NONE blend=NONE gui=NONE
+highlight Pmenu guifg=#d8c097 guibg=#2f2f2f guisp=NONE blend=NONE gui=NONE
 highlight! link PmenuSbar Pmenu
 highlight! link PmenuThumb PmenuSbar
-highlight PmenuSel guifg=#333333 guibg=#999999 guisp=NONE blend=NONE gui=NONE
+highlight PmenuSel guifg=#d8c097 guibg=#4f4f4f guisp=NONE blend=NONE gui=NONE
 highlight PreProc guifg=#9e7487 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight Question guifg=#ef8f44 guibg=NONE guisp=NONE blend=NONE gui=NONE
 highlight QuickFixLine guifg=#fafaa0 guibg=NONE guisp=NONE blend=NONE gui=NONE

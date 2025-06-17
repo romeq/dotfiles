@@ -1,16 +1,43 @@
 return {
     -- packages
     {
-        "neovim/nvim-lspconfig", -- REQUIRED: for native Neovim LSP integration
-        lazy = false,            -- REQUIRED: tell lazy.nvim to start this plugin at startup
-        dependencies = {
-            -- main one
-            { "ms-jpq/coq_nvim",      branch = "coq",      build = ":COQdeps" },
-
-            -- 9000+ Snippets
-            { "ms-jpq/coq.artifacts", branch = "artifacts" },
-        }
+        "ray-x/go.nvim",
+        dependencies = { -- optional packages
+            "ray-x/guihua.lua",
+            "neovim/nvim-lspconfig",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        opts = {
+            -- lsp_keymaps = false,
+            -- other options
+        },
+        config = function(_, opts)
+            require("go").setup(opts)
+            local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                pattern = "*.go",
+                callback = function()
+                    require('go.format').goimports()
+                end,
+                group = format_sync_grp,
+            })
+        end,
+        event = { "CmdlineEnter" },
+        ft = { "go", 'gomod' },
+        build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
+
+    { 'neovim/nvim-lspconfig' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-cmdline' },
+    { 'petertriho/cmp-git' },
+    { 'Snikimonkd/cmp-go-pkgs' },
+    { 'hrsh7th/nvim-cmp', config = function()
+        require("configs.nvim-cmp")
+    end },
+
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.8',

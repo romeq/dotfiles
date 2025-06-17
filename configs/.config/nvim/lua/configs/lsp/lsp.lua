@@ -1,6 +1,7 @@
 local opts = { noremap = true, silent = true }
 
 local attach_fn = function(_, bufnr)
+    print(bufnr)
     -- Mappings.
 
     -- Enable completion triggered by <c-x><c-o>
@@ -18,17 +19,19 @@ local attach_fn = function(_, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ref', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>fo', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp_config = require 'lspconfig'
 lsp_config.clangd.setup {
+    capabilities = capabilities,
     on_attach = attach_fn,
     cmd = { "clangd", "--background-index", "--completion-style=bundled" },
 }
-lsp_config.ts_ls.setup { on_attach = attach_fn, }
-lsp_config.lua_ls.setup { on_attach = attach_fn, }
-lsp_config.hls.setup { on_attach = attach_fn, }
-lsp_config.pyright.setup { on_attach = attach_fn, }
-lsp_config.rust_analyzer.setup { on_attach = attach_fn, }
-lsp_config.gopls.setup { on_attach = attach_fn, }
+lsp_config.ts_ls.setup { capabilities = capabilities, on_attach = attach_fn, }
+lsp_config.lua_ls.setup { capabilities = capabilities, on_attach = attach_fn, }
+lsp_config.hls.setup { capabilities = capabilities, on_attach = attach_fn, }
+lsp_config.pyright.setup { capabilities = capabilities, on_attach = attach_fn, }
+lsp_config.rust_analyzer.setup { capabilities = capabilities, on_attach = attach_fn, }
+lsp_config.gopls.setup { capabilities = capabilities, on_attach = attach_fn, }
