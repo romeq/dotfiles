@@ -49,4 +49,4 @@ eval "$(zoxide init zsh)"
 # The following lines were added by compinstall
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle :compinstall filename '/home/rmq/.zshrc'
-
+eval $(thefuck --alias)
