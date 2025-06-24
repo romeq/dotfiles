@@ -42,7 +42,7 @@ rustup default nightly
 ```sh
 # from https://github.com/Morganamilo/paru
 sudo pacman -S --needed base-devel
-cd $HOME
+cd $HOME/dev
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
