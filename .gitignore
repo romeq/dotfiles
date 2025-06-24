@@ -1,2 +1,3 @@
 .zsh_history
 configs/.config/discord
+configs/.config/nvim/lazy-lock.json
